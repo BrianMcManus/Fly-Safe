@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/MainLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please enter your aircrafts details"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:paddingBottom="50px">
+    </TextView>
+
+    <!-- Title -->
+
+    <TextView
+        android:id="@+id/TitleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        >
+    </TextView>
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/TitleLabel"
+        android:ems="10"
+        android:hint="Enter your planes name"
+        android:inputType="textShortMessage"
+        >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/spinnerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please choose your aircraft type"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:paddingTop="50px">
+    </TextView>
+
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/modelType_arrays"
+        android:prompt="@string/modelType_prompt"
+        android:layout_below="@+id/spinnerLabel"
+        android:paddingBottom="50px"
+        />
+
+    <!-- Width -->
+
+    <TextView
+        android:id="@+id/WidthLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Width"
+        android:textAppearance="?android:attr/textAppearanceLarge" >
+    </TextView>
+
+    <EditText
+        android:id="@+id/Width"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/WidthLabel"
+        android:ems="10"
+        android:hint="Enter your aircrafts width"
+        android:inputType="numberDecimal"
+        android:paddingBottom="50px">
+    </EditText>
+
+
+    <!-- Width -->
+
+    <TextView
+        android:id="@+id/lengthLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Length"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:paddingTop="50px">
+    </TextView>
+
+    <EditText
+        android:id="@+id/Length"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/lengthLabel"
+        android:ems="10"
+        android:hint="Enter your aircrafts length"
+        android:inputType="numberDecimal"
+        android:paddingBottom="50px">
+    </EditText>
+
+    <TextView
+        android:id="@+id/spinner1Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please choose your aircraft fuel type"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:paddingTop="50px">
+    </TextView>
+
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/fuelType_arrays"
+        android:prompt="@string/fuelType_prompt"
+        android:layout_below="@+id/spinner1Label"
+        android:paddingBottom="50px"/>
+
+
+    <!-- Registration number -->
+
+    <TextView
+        android:id="@+id/registrationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registration"
+        android:textAppearance="?android:attr/textAppearanceLarge" >
+    </TextView>
+
+    <EditText
+        android:id="@+id/Registration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/RegistrationLabel"
+        android:ems="10"
+        android:hint="Enter your aircrafts registration number"
+        android:inputType="numberDecimal"
+        android:paddingBottom="50px">
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dip">
+        <!-- Buttons -->
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Reset" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="Submit" />
+    </LinearLayout>
+
+</LinearLayout>
+    </ScrollView>

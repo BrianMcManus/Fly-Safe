@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/intro"
+        android:textSize="16dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question1"
+        android:layout_below="@+id/intro"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer1"
+        android:layout_below="@+id/question1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question2"
+        android:layout_below="@+id/answer1"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer2"
+        android:layout_below="@+id/question2"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question3"
+        android:layout_below="@+id/answer2"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer3"
+        android:layout_below="@+id/question3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question4"
+        android:layout_below="@+id/answer3"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer4"
+        android:layout_below="@+id/question4"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question5"
+        android:layout_below="@+id/answer4"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer5"
+        android:layout_below="@+id/question5"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question6"
+        android:layout_below="@+id/answer5"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer6"
+        android:layout_below="@+id/question6"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question7"
+        android:layout_below="@+id/answer6"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer7"
+        android:layout_below="@+id/question7"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question8"
+        android:layout_below="@+id/answer7"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer8"
+        android:layout_below="@+id/question8"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question9"
+        android:layout_below="@+id/answer8"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer9"
+        android:layout_below="@+id/question9"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question10"
+        android:layout_below="@+id/answer9"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer10"
+        android:layout_below="@+id/question10"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question11"
+        android:layout_below="@+id/answer10"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer11"
+        android:layout_below="@+id/question11"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question12"
+        android:layout_below="@+id/answer11"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer12"
+        android:layout_below="@+id/question12"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question13"
+        android:layout_below="@+id/answer12"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer13"
+        android:layout_below="@+id/question13"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question14"
+        android:layout_below="@+id/answer13"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer14"
+        android:layout_below="@+id/question14"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question15"
+        android:layout_below="@+id/answer14"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer15"
+        android:layout_below="@+id/question15"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question16"
+        android:layout_below="@+id/answer15"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer16"
+        android:layout_below="@+id/question16"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question17"
+        android:layout_below="@+id/answer16"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer17"
+        android:layout_below="@+id/question17"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question18"
+        android:layout_below="@+id/answer17"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer18"
+        android:layout_below="@+id/question18"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question19"
+        android:layout_below="@+id/answer18"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer19"
+        android:layout_below="@+id/question19"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question20"
+        android:layout_below="@+id/answer19"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer20"
+        android:layout_below="@+id/question20"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question21"
+        android:layout_below="@+id/answer20"
+        android:textSize="18dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        android:background="#7ECFE3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer21"
+        android:layout_below="@+id/question21"/>
+
+</RelativeLayout>
+    </ScrollView>

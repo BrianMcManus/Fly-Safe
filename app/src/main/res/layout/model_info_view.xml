@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+
+    <TextView
+        android:id="@+id/name_title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dip"
+        android:paddingBottom="20dip"/>
+
+
+    <TextView
+        android:id="@+id/type_title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/type_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dip"
+        android:layout_below="@id/type_title_label"
+        android:paddingBottom="20dip"
+        />
+
+    <TextView
+        android:id="@+id/fuel_title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/fuel_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dip"
+        android:layout_below="@id/fuel_title_label"
+        android:paddingBottom="20dip"
+        />
+
+    <TextView
+        android:id="@+id/length_title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/length_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dip"
+        android:layout_below="@id/length_title_label"
+        android:paddingBottom="20dip"
+        />
+
+    <TextView
+        android:id="@+id/width_title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/width_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dip"
+        android:layout_below="@id/width_title_label"
+        android:paddingBottom="20dip"
+        />
+
+    <TextView
+        android:id="@+id/registration_title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dip"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/registration_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dip"
+        android:layout_below="@id/registration_title_label"
+        android:paddingBottom="20dip"
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/validateButton"
+        android:text="Where can this model fly?"
+        android:layout_below="@id/registration_label"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dip"
+
+        />
+
+</LinearLayout>

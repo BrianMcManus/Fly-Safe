@@ -1,0 +1,511 @@
+{
+  "Airports" : {
+    "Abbeyleix, County Laois, Leinster, Ireland" : {
+      "lat" : 52.892222,
+      "long" : -7.262777,
+      "name" : "Abbeyleix,County Laois,Leinster,Ireland"
+    },
+    "Abbeyshrule, County Longford, Leinster, Ireland" : {
+      "lat" : 53.591389,
+      "long" : -7.642777,
+      "name" : "Abbeyshrule,County Longford, Leinster, Ireland"
+    },
+    "Baldonnel, County Dublin, Leinster, Ireland" : {
+      "lat" : 53.301667,
+      "long" : -6.451332,
+      "name" : "Baldonnel,County Dublin,Leinster,Ireland"
+    },
+    "Ballyboughal, County Dublin, Leinster, Ireland" : {
+      "lat" : 53.533,
+      "long" : -6.267,
+      "name" : "Baldonnel, County Dublin, Leinster, Ireland"
+    },
+    "Ballyboy, County Meath, Leinster, Ireland" : {
+      "lat" : 53.637778,
+      "long" : -6.87861,
+      "name" : "Ballyboy, County Meath, Leinster, Ireland"
+    },
+    "Bantry, County Cork, Munster, Ireland" : {
+      "lat" : 51.668889,
+      "long" : -9.484443,
+      "name" : "Bantry, County Cork, Munster, Ireland"
+    },
+    "Belfast airport" : {
+      "lat" : 54.617536,
+      "long" : -5.871423,
+      "name" : "Belfast airport"
+    },
+    "Belmullet, County Mayo, Connacht, Ireland" : {
+      "lat" : 54.222778,
+      "long" : -10.030832,
+      "name" : "Belmullet, County Mayo, Connacht, Ireland"
+    },
+    "Birr, County Offaly, Leinster, Ireland" : {
+      "lat" : 53.070833,
+      "long" : -7.89861,
+      "name" : "Birr, County Offaly, Leinster, Ireland"
+    },
+    "Brittas Bay, County Wicklow, Leinster, Ireland" : {
+      "lat" : 52.850306,
+      "long" : -6.050999,
+      "name" : "Brittas Bay, County Wicklow, Leinster, Ireland"
+    },
+    "Caherciveen, County Kerry, Munster, Ireland" : {
+      "lat" : 51.95,
+      "long" : -10.217,
+      "name" : "Caherciveen, County Kerry, Munster, Ireland"
+    },
+    "Carrickfinn, County Donegal, Ulster, Ireland" : {
+      "lat" : 55.044192,
+      "long" : -8.340999,
+      "name" : "Carrickfinn, County Donegal, Ulster, Ireland"
+    },
+    "Castlebar, County Mayo, Connacht, Ireland" : {
+      "lat" : 53.848465,
+      "long" : -9.280305,
+      "name" : "Castlebar, County Mayo, Connacht, Ireland"
+    },
+    "Castleforbes, County Longford, Leinster, Ireland" : {
+      "lat" : 53.778333,
+      "long" : -7.835277,
+      "name" : "Castleforbes, County Longford, Leinster, Ireland"
+    },
+    "Clonbullogue, County Offaly, Leinster, Ireland" : {
+      "lat" : 53.249722,
+      "long" : -7.123332,
+      "name" : "Clonbullogue, County Offaly, Leinster, Ireland"
+    },
+    "Coonagh, County Limerick, Munster, Ireland" : {
+      "lat" : 52.666389,
+      "long" : -8.681943,
+      "name" : "Coonagh, County Limerick, Munster, Ireland"
+    },
+    "Cork, County Cork, Munster, Ireland" : {
+      "lat" : 51.841389,
+      "long" : -8.49111,
+      "name" : "Cork, County Cork, Munster, Ireland"
+    },
+    "Dublin, County Dublin, Leinster, Ireland" : {
+      "lat" : 53.421389,
+      "long" : -6.269999,
+      "name" : "Dublin, County Dublin, Leinster, Ireland"
+    },
+    "Dublin, County Kildare, Leinster, Ireland" : {
+      "lat" : 53.352292,
+      "long" : -6.48831,
+      "name" : "Dublin, County Kildare, Leinster, Ireland"
+    },
+    "Erinagh, Capperoe, County Tipperary, Munster, Ireland" : {
+      "lat" : 52.8125,
+      "long" : -8.282221,
+      "name" : "Erinagh, Capperoe, County Tipperary, Munster, Ireland"
+    },
+    "Finner, County Donegal, Ulster, Ireland" : {
+      "lat" : 54.492112,
+      "long" : -8.244445,
+      "name" : "Finner, County Donegal, Ulster, Ireland"
+    },
+    "Galway, County Galway, Connacht, Ireland" : {
+      "lat" : 53.300244,
+      "long" : -8.941157,
+      "name" : "Galway, County Galway, Connacht, Ireland"
+    },
+    "Gormanston, County Meath, Leinster, Ireland" : {
+      "lat" : 53.633,
+      "long" : -6.233,
+      "name" : "Gormanston, County Meath, Leinster, Ireland"
+    },
+    "Gowran Grange, County Kildare, Leinster, Ireland" : {
+      "lat" : 53.179993,
+      "long" : -6.634999,
+      "name" : "Gowran Grange, County Kildare, Leinster, Ireland"
+    },
+    "Hacketstown, County Carlow, Leinster, Ireland" : {
+      "lat" : 52.855,
+      "long" : -6.547221,
+      "name" : "Hacketstown, County Carlow, Leinster, Ireland"
+    },
+    "Inisheer, Aran Islands, Connacht, Ireland" : {
+      "lat" : 53.058611,
+      "long" : -9.50611,
+      "name" : "Inisheer, Aran Islands, Connacht, Ireland"
+    },
+    "Inishmaan, Aran Islands, Connacht, Ireland" : {
+      "lat" : 53.091944,
+      "long" : -9.569999,
+      "name" : "Inishmaan, Aran islands, Connacht, Ireland"
+    },
+    "Inverin, County Galway, Connacht, Ireland" : {
+      "lat" : 53.230556,
+      "long" : -9.467777,
+      "name" : "Inverin, County Galway, Connacht, Ireland"
+    },
+    "Kilkenny, County Kilkenny, Leinster, Ireland" : {
+      "lat" : 52.650833,
+      "long" : -7.29611,
+      "name" : "Kilkenny, County Kilkenny, Leinster, Ireland"
+    },
+    "Killarney, County Kerry, Munster, Ireland" : {
+      "lat" : 52.180878,
+      "long" : -9.523782,
+      "name" : "Kilarney, County Kerry, Munster, Ireland"
+    },
+    "Killenaule, County Tipperary, Munster, Ireland" : {
+      "lat" : 52.633,
+      "long" : -7.633,
+      "name" : "Killenaule,County Tipperary, Munster, Ireland "
+    },
+    "Kilronan, Inishmore, Aran Islands, Connacht, Ireland" : {
+      "lat" : 53.106944,
+      "long" : -9.653888,
+      "name" : "Kilronan, Inishmore, Aran Islands, Connacht, Ireland"
+    },
+    "Kilrush, County Kildare, Leinster, Ireland" : {
+      "lat" : 53.063611,
+      "long" : -6.855277,
+      "name" : "Kilrush, County Kildare, Leinster, Ireland"
+    },
+    "Knock, County Mayo, Connacht, Ireland" : {
+      "lat" : 53.910297,
+      "long" : -8.818491,
+      "name" : "Knock, County Mayo, Connacht, Ireland"
+    },
+    "Letterkenny, County Donegal, Ulster, Ireland" : {
+      "lat" : 54.9514,
+      "long" : -7.671899,
+      "name" : "Letterkenny, County Donegal, Ulster, Ireland"
+    },
+    "Moneygall, County Tipperary, Munster, Ireland" : {
+      "lat" : 52.853889,
+      "long" : -7.98361,
+      "name" : "Moneygall, County Tipperary, Munster, Ireland"
+    },
+    "Mountshannon, County Clare, Munster, Ireland" : {
+      "lat" : 52.933,
+      "long" : -8.433,
+      "name" : "Mountshannon, County Clare, Muster, Ireland"
+    },
+    "Moyne, County Tipperary, Munster, Ireland" : {
+      "lat" : 52.703056,
+      "long" : -7.705555,
+      "name" : "Moyne, County Tipperary, Munster, Ireland"
+    },
+    "Navan, County Meath, Leinster, Ireland" : {
+      "lat" : 53.704167,
+      "long" : -6.65611,
+      "name" : "Navan, County Meath, Leinster, Ireland"
+    },
+    "Newcastle, County Wicklow, Leinster, Ireland" : {
+      "lat" : 53.071111,
+      "long" : -6.045555,
+      "name" : "Newcastle, County Wicklow, Leinster, Ireland"
+    },
+    "Powerscourt, County Wicklow, Leinster, Ireland" : {
+      "lat" : 53.1892,
+      "long" : -6.181899,
+      "name" : "Powercourt, County Wicklow, Leinster, Ireland"
+    },
+    "Rathcoole, County Cork, Munster, Ireland" : {
+      "lat" : 52.105556,
+      "long" : -8.983332,
+      "name" : "Rathcoole, County Cork, Munster, Ireland"
+    },
+    "Shannon, County Clare, Munster, Ireland" : {
+      "lat" : 52.701978,
+      "long" : -8.924816,
+      "name" : "Shannon, County Clare, Munster, Ireland"
+    },
+    "Shanwick, Ireland" : {
+      "lat" : 52.776,
+      "long" : -8.947,
+      "name" : "Shanwick, Ireland"
+    },
+    "Sligo, County Sligo, Connacht, Ireland" : {
+      "lat" : 54.280214,
+      "long" : -8.599207,
+      "name" : "Sligo, County Sligo, Connacht, Ireland"
+    },
+    "Spanish Point, County Clare, Munster, Ireland" : {
+      "lat" : 52.85,
+      "long" : -9.417,
+      "name" : "Spanish Point, County Clare, Munster, Ireland"
+    },
+    "Trevet, County Meath, Leinster, Ireland" : {
+      "lat" : 53.548611,
+      "long" : -6.516943,
+      "name" : "Trevet, County Meath, Leinster, Ireland"
+    },
+    "Trim, County Meath, Leinster, Ireland" : {
+      "lat" : 53.575,
+      "long" : -6.73861,
+      "name" : "Trim, County Meath, Leinster, Ireland"
+    },
+    "Waterford, County Waterford, Munster, Ireland" : {
+      "lat" : 52.1872,
+      "long" : -7.086963,
+      "name" : "Waterford, County Waterford, Munster, Ireland"
+    },
+    "Wexford, County Wexford, Leinster, Ireland" : {
+      "lat" : 52.4,
+      "long" : -6.483,
+      "name" : "Wexford, County Wexford, Leinster, Ireland"
+    }
+  },
+  "FlyingSites" : {
+    "Bandon Model Flying Club" : {
+      "address" : "Clashafree, Bandon",
+      "lat" : 51.7397222,
+      "long" : "-008.6944444",
+      "name" : "Bandon Model Flying Club",
+      "url" : "www.bandonmodelflyingclub.com"
+    },
+    "Carron Model Flying Club" : {
+      "address" : "Carron House",
+      "lat" : 52.5,
+      "long" : "-008.1833333",
+      "name" : "Carron Model Flying Club"
+    },
+    "Cork Model Aero Club" : {
+      "address" : "Castlelyons, Midleton",
+      "lat" : 52.015,
+      "long" : "-008.1744444",
+      "name" : "Cork Model Aero Club",
+      "url" : "www.corkmodelaeroclub.net"
+    },
+    "Cork Model Aero Club(Bandon)" : {
+      "address" : "Little Silver House, Bandon",
+      "lat" : 51.78,
+      "long" : "-008.7200000",
+      "name" : "Cork Model Aero Club ",
+      "url" : "www.corkmodelaeroclub.net"
+    },
+    "Dublin Kestrel Model Flying Club" : {
+      "address" : "Ballyfolan, Brittas",
+      "lat" : 53.2,
+      "long" : "-006.4166667",
+      "name" : "Dublin Kestrel Model Flying Club"
+    },
+    "Fingal Model Flying Club" : {
+      "address" : "Gormanston College, Gormanston",
+      "lat" : 53.1869444,
+      "long" : "-006.2416667",
+      "name" : "Fingal Model Flying Club"
+    },
+    "Galway Model Flying Club" : {
+      "address" : "Carrowbrowne",
+      "lat" : 53.3441667,
+      "long" : "-009.0152778",
+      "name" : "Galway Model Flying Club",
+      "url" : "www.galwaymodelflying.org"
+    },
+    "Irish Jet Modellers Flying Club" : {
+      "address" : "Ballyloughnan Farm, Belmont",
+      "lat" : 53.4,
+      "long" : "-008.4833333",
+      "name" : "Irish Jet Modellers Flying Club"
+    },
+    "Irish Jet Modellers Flying Club(Castlebar)" : {
+      "address" : "Ballinavarry, Castlebar",
+      "lat" : 53.8947222,
+      "long" : "-009.1225000",
+      "name" : "Irish Jet Modellers Flying Club(Castlebar)"
+    },
+    "Irish Jet Modellers Flying Club(Springmount)" : {
+      "address" : "Springmount, Gorey",
+      "lat" : 52.65,
+      "long" : "-006.3000000",
+      "name" : "Irish Jet Modellers Flying Club(Springmount)"
+    },
+    "Laois Model Aero Club" : {
+      "address" : "Clondouglas, Portlaoise",
+      "lat" : 53.0136111,
+      "long" : "-007.3727778",
+      "name" : "Laois Model Aero Club",
+      "url" : "www.airlaois.com"
+    },
+    "Leinster Model Flying Club" : {
+      "address" : "Phoenix Park",
+      "lat" : 53.3563889,
+      "long" : "-006.3405556",
+      "name" : "Leinster Model Flying Club",
+      "url" : "www.leinstermodelflyingclub.ie"
+    },
+    "Letterkenny Model Flying Club" : {
+      "address" : "Trusk Lough, Kinletter, Ballybofey",
+      "lat" : 54.7569444,
+      "long" : "-007.7938889",
+      "name" : "Letterkenny Model Flying Club "
+    },
+    "Letterkenny Model Flying Club(Convoy)" : {
+      "address" : "Carrickgrac, Convoy",
+      "lat" : 54.8455556,
+      "long" : "-007.6586111",
+      "name" : "Letterkenny Model Flying Club(Convoy)",
+      "url" : "www.letterkennymodelflyingclub.com"
+    },
+    "Letterkenny Model Flying Club(Raphoe)" : {
+      "address" : "Carnone, Raphoe",
+      "lat" : 54.8222222,
+      "long" : "-007.6305556",
+      "name" : "Letterkenny Model Flying Club(Raphoe)",
+      "url" : "www.letterkennymodelflyingclub.com"
+    },
+    "Longwood Aeromodellers" : {
+      "address" : "Blackditch, Longwood",
+      "lat" : 53.4666667,
+      "long" : "-006.9333333",
+      "name" : "Longwood Aeromodellers",
+      "url" : "www.longwoodflyers.com"
+    },
+    "Manorglen Model Flying Club" : {
+      "address" : "Glenade Lake",
+      "lat" : 54.3647222,
+      "long" : "-008.2702778",
+      "name" : "Manorglen Model Flying Club"
+    },
+    "Manorglen Model Flying Club(Sramore)" : {
+      "address" : "Sramore",
+      "lat" : 54.2880556,
+      "long" : "-008.3341667",
+      "name" : "Manorglen Model Flying Club(Sramore)"
+    },
+    "Midland Model Flying Club" : {
+      "address" : "Boora, Killcormac",
+      "lat" : 53.2158333,
+      "long" : "-007.7116667",
+      "name" : "Midland Model Flying Club",
+      "url" : "www.midlandmfc.ie"
+    },
+    "Midland Model Flying Club(Birr)" : {
+      "address" : "Birr Airfield, Birr",
+      "lat" : 53.0727778,
+      "long" : "-007.9033333",
+      "name" : "Midland Model Flying Club(Birr)",
+      "url" : "www.midlandmfc.ie"
+    },
+    "Model Aircraft & Related Sports Club" : {
+      "address" : "Castletown Kinneigh, Enniskeane",
+      "lat" : 51.7705556,
+      "long" : "-008.9658333",
+      "name" : "Model Aircraft & Related Sports Club",
+      "url" : "www.modelaircraftcork.com"
+    },
+    "Model County Aero Club" : {
+      "address" : "Coolgarrow Lane, Enniscorthy",
+      "lat" : 52.5083333,
+      "long" : "-006.4916667",
+      "name" : "Model County Aero Club"
+    },
+    "Mullingar Model Flying Club" : {
+      "address" : "Robinstown, Mullingar",
+      "lat" : 53.5333333,
+      "long" : "-007.3333333",
+      "name" : "Mullingar Model Flying Club",
+      "url" : "www.mullingarmodelflyingclub.com"
+    },
+    "Newbridge and District Model Flying Club" : {
+      "address" : "The Little Curragh, Near Newbridge",
+      "lat" : 53.1752778,
+      "long" : "-006.8872222",
+      "name" : "Newbridge and District Model Flying Club"
+    },
+    "Rising Sun Model Flying Club " : {
+      "address" : "Horsehill, Dunderrow, Kinsale",
+      "lat" : 51.7666667,
+      "long" : "-008.5833333",
+      "name" : "Rising Sun Model Flying Club "
+    },
+    "Roundwood Model Aero Club" : {
+      "address" : "Mullinaveigue, Roundwood",
+      "lat" : 53.0788889,
+      "long" : "-006.2311111",
+      "name" : "Roundwood Model Aero Club",
+      "url" : "www.rwmac.ie"
+    },
+    "Royal County Aeromodellers Club" : {
+      "address" : "Ballyhealy, Delvin",
+      "lat" : 53.9658333,
+      "long" : "-007.1019444",
+      "name" : "Royal County Aeromodellers Club",
+      "url" : "www.royalcountyflyers.com"
+    },
+    "Shankill Radio Flying Club" : {
+      "address" : "Foxes Field, Lower Calary, Kilmacanogue",
+      "lat" : 53.1394444,
+      "long" : "-006.1577778",
+      "name" : "Shankill Radio Flying Club",
+      "url" : "www.srfc.net"
+    },
+    "Shannon Model Flying Club" : {
+      "address" : "Inniscullen Hill, Shannon",
+      "lat" : 52.6986111,
+      "long" : "-008.8547222",
+      "name" : "Shannon Model Flying Club",
+      "url" : "www.smfc.org"
+    },
+    "Sligo Model Flying Club" : {
+      "address" : "Annaghmore Estate, Collooney",
+      "lat" : 54.1708333,
+      "long" : "-008.5475000",
+      "name" : "Sligo Model Flying Club",
+      "url" : "www.sligomfc.com"
+    },
+    "Three Counties Model Flying Club" : {
+      "address" : "Moyley Hall, Red Lane, Blessington",
+      "lat" : 53.1833333,
+      "long" : "-006.5166667",
+      "name" : "Three Counties Model Flying Club"
+    },
+    "Tipperary Model Flying Club" : {
+      "address" : "Derryhogan, Littleton, Thurles",
+      "lat" : 52.6322222,
+      "long" : "-007.6944444",
+      "name" : "Tipperary Model Flying Club",
+      "url" : "www.tippmfc.ie"
+    },
+    "Vertigo Model Flying Club" : {
+      "address" : "Curraghataggart, Portlaw",
+      "lat" : 52.2166667,
+      "long" : "-007.3666667",
+      "name" : "Vertigo Model Flying Club"
+    },
+    "Waterford Model Flying Club" : {
+      "address" : "Ross, Carrick-on-suir",
+      "lat" : 52.2833333,
+      "long" : "-007.4833333",
+      "name" : "Waterford Model Flying Club",
+      "url" : "www.waterfordmodelflying.com"
+    },
+    "Wexford Model Flying Club" : {
+      "address" : "Cloonerane, Taghmon",
+      "lat" : 52.3283333,
+      "long" : "-006.6775000",
+      "name" : "Wexford Model Flying Club",
+      "url" : "www.wexfordmodelflyingclub.com"
+    }
+  },
+  "users" : {
+    "QJh4dgp2FkZYre5lPKvHO8c8KBu2" : {
+      "models" : {
+        "dfv" : {
+          "fuelType" : "Electric",
+          "length" : 1000,
+          "modelId" : 0,
+          "modelType" : "Waterplane",
+          "name" : "dfv",
+          "registrationId" : 0,
+          "width" : 1000
+        },
+        "kjlk" : {
+          "fuelType" : "Electric",
+          "length" : 1234,
+          "modelId" : 0,
+          "modelType" : "Airplane",
+          "name" : "kjlk",
+          "registrationId" : 0,
+          "width" : 1234
+        }
+      }
+    }
+  }
+}

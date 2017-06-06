@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.flyingsitevalidator3">
+
+    <!-- Required to show current location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher2"
+        android:label="Fly-Safe"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainMenuActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="Fly-Safe"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".MapsActivity" />
+        <activity android:name=".ClubsAndSites" />
+        <activity android:name=".Models" />
+        <activity android:name=".ModelInfo" />
+        <activity android:name=".AddModelActivity"/>
+        <activity android:name=".EditModelActivity"/>\
+        <activity android:name=".InfoMenuActivity"/>
+        <activity android:name=".RulesAndRegulationsActivity"/>
+        <activity android:name=".FAQActivity"/>
+        <activity android:name=".FlyingTipsActivity"/>
+        <activity android:name=".UsefulLinksActivity"/>
+        <activity android:name=".ContactUsActivity"/>
+        <activity android:name=".ModelEligibilityMap"/>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDgjT6tSoM38oYaAo-UnQIbzlCz4n8Cvc4" />
+
+        <!--<meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCSHMQVehVA0DEEt5P8P8nm9sy3LMuy5GY
+" />-->
+
+        <action android:name="android.location.PROVIDERS_CHANGED" />
+
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.location.PROVIDERS_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.flyingsitevalidator3.MyService"/>
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
