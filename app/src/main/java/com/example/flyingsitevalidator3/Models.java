@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -47,7 +48,7 @@ public class Models extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clubs_and_sites);
+        setContentView(R.layout.activity_view_models);
 
         //Create a new intent from the intent passed from the previous activity
         Intent intent = this.getIntent();
@@ -60,7 +61,7 @@ public class Models extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1);
 
-        // Put divider between Models and FooterView
+       /* // Put divider between Models and FooterView
         listView.setFooterDividersEnabled(true);
 
         //Set the footer view to the end of the list
@@ -76,8 +77,15 @@ public class Models extends AppCompatActivity {
                 Intent intent = new Intent(context, AddModelActivity.class);
                 startActivityForResult(intent, 0);
             }
-        });
+        });*/
 
+        FloatingActionButton myFab = (FloatingActionButton) findViewById(R.id.fab);
+        myFab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AddModelActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
 
         //Set the custom adapter to the list view
         listView.setAdapter(adapter);

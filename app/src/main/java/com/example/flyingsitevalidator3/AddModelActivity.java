@@ -64,7 +64,6 @@ public class AddModelActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i("AddModReset", "Entered resetButton.OnClickListener.onClick()");
 
-                // TODO - Reset data to default values
                 mTitleText.setText("");
                 modTypeSpinner.setSelection(0);
                 mLength.setText("");

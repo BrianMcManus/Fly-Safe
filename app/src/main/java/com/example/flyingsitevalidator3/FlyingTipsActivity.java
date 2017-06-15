@@ -63,7 +63,7 @@ public class FlyingTipsActivity extends AppCompatActivity {
                     "Before the first flight:<br>" +
                     "<br>" +
                     "<b>Weight</b><br>" +
-                    "&nbsp&nbsp is the model too heavy?<br>" +
+                    "&nbsp&nbsp Is the model too heavy?<br>" +
                     "<br><b>Balance</b><br>" +
                     "&nbsp&nbsp Is the center of gravity (fore and aft) within the range shown on &nbsp&nbsp the plans?<br>" +
                     "&nbsp&nbsp Is the model balanced side to side? (right and left wings of <br>&nbsp&nbsp equal weight)<br>" +
