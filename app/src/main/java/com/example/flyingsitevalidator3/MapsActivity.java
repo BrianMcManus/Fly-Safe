@@ -968,6 +968,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    //Moving into server
+
     //This method takes in a location and uses it to build a StringBuilder objects which represents a request to Google Places API
     public StringBuilder sbMethod(Location currentLocation) {
         //current location
@@ -986,6 +988,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         return sb;
     }
+//End going to server
 
     /*Used specifically for when the users location is available, it requests data from Google Places API to find any
      * structures around the the users location coordinates, the place type is specified in the parameters,

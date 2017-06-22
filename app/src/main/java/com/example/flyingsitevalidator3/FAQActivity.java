@@ -151,13 +151,13 @@ public class FAQActivity extends AppCompatActivity {
             question16.setText("16. Where can I not fly my drone?");
 
             TextView answer16 = (TextView) findViewById(R.id.answer16);
-            answer16.setText("There are   a number of airspace restrictions, in which you must never fly your drone. \nPlease see question 18.\n\n");
+            answer16.setText("There are a number of airspace restrictions, in which you must never fly your drone. \nPlease see question 18.\n\n");
 
             TextView question17 = (TextView) findViewById(R.id.question17);
             question17.setText("17. How can I tell if an aerodrome is nearby?");
 
             TextView answer17 = (TextView) findViewById(R.id.answer17);
-            answer17.setText("It is the responsibility of the person operating a drone to assess the area in which they intend to fly. While the IAA’s ASSET tool can be used to establish the location of licensed aerodromes within the State, it is essential for the person who will operate the drone to visually inspect the area in which they   intend to operate for aircraft activity.\n\n");
+            answer17.setText("It is the responsibility of the person operating a drone to assess the area in which they intend to fly. While the IAA’s ASSET tool can be used to establish the location of licensed aerodromes within the State, it is essential for the person who will operate the drone to visually inspect the area in which they intend to operate for aircraft activity.\n\n");
 
             TextView question18 = (TextView) findViewById(R.id.question18);
             question18.setText("18. How can I tell where controlled or restricted airspace is?");

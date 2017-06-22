@@ -12,17 +12,7 @@
         android:label="Fly-Safe"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainMenuActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:label="Fly-Safe"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainMenuActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MapsActivity" />
@@ -38,6 +28,17 @@
         <activity android:name=".UsefulLinksActivity"/>
         <activity android:name=".ContactUsActivity"/>
         <activity android:name=".ModelEligibilityMap"/>
+        <activity
+            android:name=".WelcomeScreen"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="Fly-Safe"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -48,7 +49,7 @@
         -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDgjT6tSoM38oYaAo-UnQIbzlCz4n8Cvc4" />
+            android:value="AIzaSyDYSmONTW6j2lGhU5mVEbP5EAfcU-T5_zw" />
 
         <!--<meta-data
             android:name="com.google.android.geo.API_KEY"

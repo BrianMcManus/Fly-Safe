@@ -79,7 +79,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-
+            //
             //Get all the airport locations and details for distributing to other classes and place them in a list
                 new Thread(new Runnable() {
                     public void run() {
@@ -111,24 +111,16 @@ public class MainMenuActivity extends AppCompatActivity {
                             }
 
                             @Override
-                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                            }
+                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
 
                             @Override
-                            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                            }
+                            public void onChildRemoved(DataSnapshot dataSnapshot) {}
 
                             @Override
-                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                            }
+                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
 
                             @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
+                            public void onCancelled(DatabaseError databaseError) {}
                         });
                     }
                 }).start();

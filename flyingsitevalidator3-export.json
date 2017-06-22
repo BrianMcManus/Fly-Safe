@@ -251,6 +251,48 @@
       "name" : "Wexford, County Wexford, Leinster, Ireland"
     }
   },
+  "FAQ" : {
+    "Do I need a permission from the IAA to fly a drone? If so, what do I need?" : "No, provided you adhere to the limits prescribed within the Small Unmanned Aircraft (Drones) and Rockets Order, 2015 SI 563 of 2015.   (Please see question 4 above for the list of limits).",
+    "Do I need a permission to fly a drone with an inbuilt or mounted camera?" : "Irrespective of whether your drone has an inbuilt or mounted camera or not, the same conditions apply. See Data Protection Commissioner website www.dataprotection.ie",
+    "Do I need a qualification to operate a drone?" : "If you operate within the limits set in the Small Unmanned Aircraft (Drones) and Rockets Order, 2015 (SI 563 of 2015), no qualification is required. However, to operate under Specific Operating Permission, a Pilot Competency Certificate is required. www.iaa.ie/dronesapplicationforms",
+    "Do I need insurance to operate my drone?" : "The IAA recommends that everybody who operates a drone has insurance.",
+    "Do I need to register my drone with the IAA?" : "All drones over 1kg must be registered with the IAA. This includes the weight of the battery and all attached equipment. You can register your drone via the IAA website at www.iaa.ie/drones or with the registration function in this app",
+    "Do I need to register my model aircraft?" : "Yes. Model aircraft are treated in the same way as drones. All model aircraft over 1kg must be registered with the IAA. For more, visit the Model Aeronautics Council of Ireland at www.maci.ie",
+    "Do the same regulations apply if I fly my drone over private property?" : "The regulations apply EVERYWHERE in Irish airspace. Be advised that there may be privacy or trespass laws or other legal issues that should be taken into consideration by the person operating the drone. These rules are not within the remit of the IAA.",
+    "How can I tell if an aerodrome is nearby?" : "It is the responsibility of the person operating a drone to assess the area in which they intend to fly. While the IAA’s ASSET tool can be used to establish the location of licensed aerodromes within the State, it is essential for the person who will operate the drone to visually inspect the area in which they intend to operate for aircraft activity",
+    "How can I tell where controlled or restricted airspace is?" : "The IAA’s Asset tool can be used to determine controlled and restricted airspace areas. Please note that the boundaries of restricted airspace may change and that Temporary Restricted Airspace areas may be created. It is essential to get up to date information on controlled and restricted airspace via ASSET every time you wish to fly.",
+    "How do I apply for a Specific Operating Permission to fly my drone?" : "In order to get Specific Operating Permission, you must first attend a drone safety training course and produce an operations manual that is acceptable to the IAA. Please see Aeronautical Notice U.02 for more detailed information. To apply, go to www.iaa.ie/dronesapplicationforms",
+    "How do I register my drone?" : "You can register your drone via the IAA website at www.iaa.ie/drones. This is a two-step process. In order to register your drone, you must first register with ASSET, the IAA's online terrain mapping system. Once done, you will be able to register your drone with the IAA via the ASSET system.",
+    "I want to use my drone for commercial activities, Do I need permission from the IAA?" : "You do not need permission from the IAA to use drones commercially. However, if you wish to fly your drone outside the limits prescribed in the regulations you must apply for a Specific Operating Permission from the IAA.",
+    "Is there a difference between a drone and a model aircraft?" : "Model aircraft and drones are both considered small unmanned aircraft and the same rules apply to their operation. These rules are contained within in the Small Unmanned Aircraft (Drones) and Rockets Order, 2015 (SI 563 of 2015).",
+    "Is there a minimum age for operating a drone?" : "While there is no minimum age for operating a drone in aviation regulation, the IAA advises that age guidelines indicated by drone manufacturers are followed. You must be over 16 to register your drone, if it is over 1kg. A parent or guardian may register the drone for those under 16. Please note that other laws may apply.",
+    "Up to what distance and height can I operate my drone?" : "You must not operate your drone beyond 300m and400ft (120m) above ground level in uncontrolled airspace, and 300m and 50ft (15m) in controlled airspace",
+    "What aviation regulations govern the use of drones?" : "The Small Unmanned Aircraft (Drones) and Rockets Order, 2015 (SI 563 of 2015) regulates the use of drones in Ireland. There are also Aeronautical Notices, Directions and Instructions that apply to the use of drones.",
+    "What if I want to fly my drone outside the limits prescribed in the regulations?" : "If you wish to fly your drone outside the limits prescribed in the regulations, you must apply for a Specific Operating Permission (SOP) from the IAA following training with one of the approved IAA Registered Training Facilities (RTF). Please see www.iaa.ie/rtf for a list of training facilities.",
+    "What is a Drone?" : "A drone is an unmanned aircraft/remotely piloted aircraft",
+    "What is prohibited regarding the operation of drones?" : "The Small Unmanned Aircraft (Drones) and Rockets Order, 2015 (SI 563 of 2015) contains a number of limitations for the operation of drones. These include never operating a drone: • if it will be a hazard to another aircraft in flight • over an assembly of people - 12 persons or more • farther than 300m from the person operating the drone • within 30m of any person, vessel or structure not under the control of the person operating the drone • closer than 5km from an aerodrome • in a negligent or reckless manner, so as to endanger life or property of others • over 400ft (120m) above ground level • over urban areas • in civil or military controlled airspace • in restricted areas (e.g. military installations, prisons, etc. • unless the person operating the drone has permission from the landowner for take-off and landing. Please see the Small Unmanned Aircraft (Drones) and Rockets Order, 2015 (SI 563 of 2015) for more detailed information.   ",
+    "Where can I get more information on the regulations and how to safely operate a drone?" : "Please see the Small Unmanned Aircraft (Drones) and Rockets Order, 2015 (SI 563 of 2015) and associated Aeronautical Notices. For further information, visit www.iaa.ie/drones",
+    "Where can I not fly my drone?" : "There are a number of airspace restrictions, in which you must never fly your drone. Please see question 18."
+  },
+  "Flying tips" : {
+    "After repair:" : "The checklist should be gone through again, with particular attention to the areas that were worked on or repaired.",
+    "Before EVERY flight:" : {
+      "Controls" : "Check the control throw direction for all surfaces. It's very easy to do a repair or radio adjustment and forget to switch these.",
+      "Engine" : "Start the engine (if applicable) and test the entire throttle range. Run it at full throttle with its nose in the air for 15 seconds or so.",
+      "Receiver" : "Check the receiver flight pack with a voltmeter to ensure enough charge."
+    },
+    "Learning To Fly" : "The most important point, one which cannot be overstressed: GET AN INSTRUCTOR! Also make sure you have your instructor check your plane thoroughly before the first flight---as someone said, it is much better to go home with no flights and one airplane than go home with one half a flight and many little pieces. This is really, REALLY important.",
+    "Pre-flight Checklist" : {
+      "Alignment" : "Are all flying surfaces at the proper angle relative to each other? Are there any twists in the wings? (other than designed-in washin or washout)",
+      "Balance" : "Is the center of gravity (fore and aft) within the range shown on the plans? Is the model balanced side to side? (right and left wings of equal weight). ",
+      "Control linkage" : "Have all linkages been checked to make sure they are secure? Are all snap-links closed? Have snap-links been used on the servo end? (They are more likely to come loose when used on the servo). Have all screws been attached to servo horns?",
+      "Control surfaces" : "Are they all securely attached? (i.e. hinges glued, not just pushed in). Are the control throws in the proper direction and amount? (usually indicated in the plans). ",
+      "Engine and fuel (if applicable)" : "Has the engine been thoroughly tested? Are all engine screws tight? Has the engine been run up at full throttle with the plane's nose straight up in the air? (To make sure it won't stall when full power is applied on climbout). Is the fuel tank level with the flying attitude of the plane? Is the carburetor at the same height (not above) as the fuel tank? Is the fuel tank klunk in the proper position and moving freely?   ",
+      "Intro" : "When your model is ready to fly, make sure it is thouroghly checked over by someone who has done alot of building and flying. When I say thouroughly, I don't mean just picking it up and checking the balance and thumping the tires a few times. Every detail of setup and connection should be gone over in detail. If your instructor doesn't want to spend this much time checking your plane, find a new instructor. The importance of this pre-flight check cannot be overemphasized! Many planes are lost due to a simple oversight that could have been caught by a pre-flight! Here's a checklist: Before the first flight: ",
+      "Radio" : "Has a full range check been performed? Has the flight pack charge been checked with a voltmeter? Have the receiver and battery been protected from vibration and shock? Is the receiver's antenna fully extended and not placed within a fuselage with any sort of metallic covering? ",
+      "Weight" : "Is the model too heavy?"
+    }
+  },
   "FlyingSites" : {
     "Bandon Model Flying Club" : {
       "address" : "Clashafree, Bandon",
@@ -361,7 +403,8 @@
       "address" : "Glenade Lake",
       "lat" : 54.3647222,
       "long" : "-008.2702778",
-      "name" : "Manorglen Model Flying Club"
+      "name" : "Manorglen Model Flying Club",
+      "restriction" : "Waterplane"
     },
     "Manorglen Model Flying Club(Sramore)" : {
       "address" : "Sramore",
@@ -463,6 +506,14 @@
       "name" : "Tipperary Model Flying Club",
       "url" : "www.tippmfc.ie"
     },
+    "Tountinna Mountain Gliding Site" : {
+      "address" : "Tountinna Mountain",
+      "lat" : 52.8477778,
+      "long" : "-008.39138889",
+      "name" : "Tountinna Mountain Gliding Site",
+      "restriction" : "Glider",
+      "url" : "http://www.gliderireland.net/"
+    },
     "Vertigo Model Flying Club" : {
       "address" : "Curraghataggart, Portlaw",
       "lat" : 52.2166667,
@@ -484,26 +535,62 @@
       "url" : "www.wexfordmodelflyingclub.com"
     }
   },
+  "Rules" : {
+    "Access requests" : "Under Section 4 of the Act any person whose image is recorded on a drone system has a right to seek and be supplied with a copy of their own personal data from the footage. To exercise that right, a person must make an application in writing. The data controller may charge up to €6.35 for responding to such a request and must respond within 40 days. When complying with an access request; data of parties other than the requesting individual should be redacted prior to supplying a copy of the data to the requestor. E.g. pixelated, blurred or darkened out in the case of images or stills. In the event of a request for camera footage the requester should provide the data controller with a reasonable indication of the timeframe of the recording being sought - i.e. they should provide details of the approximate time and the specific date(s) on which their image was recorded. Claims by a data controller that they are unable to produce copies of footage or that stills cannot be produced from the footage are unacceptable excuses in the context of dealing with an access request. In short, where a data controller uses a drone system to process personal data, its takes on and is obliged to comply with all associated data protection obligations.",
+    "Covert Surveillance" : "Please refer to the guidance on CCTV systems with regards to covert surveillance ",
+    "Data controllers and data processors" : "Where processing is not carried out directly by the controller, (drone owner/operator) this processing should be governed by a contract or legal act that requires the processor to act only on instructions from the controller.",
+    "Drone registration" : "\"From the 21st December, drone registration is mandatory in accordance with the Small Unmanned Aircraft (Drones) and Rockets Order S.I. 563 of 2015.  All drones over 1kg must be registered.",
+    "Introduction" : "  Drones are aircraft without a human pilot on board, which are guided by a remote pilot. These aircraft are also sometimes called Remotely Piloted Aircraft Systems (RPAS) or Unmanned Aerial Vehicles (UAV). While drones have long been deployed for military purposes, civilian use is fairly recent. Civil drones may be used to collect information about people's private lives. Unless such systems are used with proper care and consideration, they can give rise to concern that the individual's home or private life is being invaded. It is possible that use of such aircraft may cause privacy concerns among the public as a result of equipment which may be added to the drones. This may include sensors of various types including smart cameras, specific sensors, detection equipment and radio-frequency equipment.  Additional guidance on CCTV systems which is relevant to the use of camera systems on drones, is also provided by this Office[1]  Operation and usage of Drones is primarily regulated by the Irish Aviation Authority[2]. https://www.iaa.ie/ It is up to drone operators to comply with these regulations. This information is maintained and is updated over time so it is important that operators are up to date in their knowledge of these regulations, along with any considerations they need to undertake regarding the Data Protection Acts.",
+    "Legitimate use of drones in a domestic Setting" : "The processing of personal data kept by an individual and concerned solely with the management of his/her personal, family or household affairs or kept by an individual for recreational purposes is exempt from the provisions of the Data Protection Acts. This exemption, sometimes called the “household exemption”, would generally apply to the handling of the personal data of private persons, as long as this takes place for personal, non-commercial purposes.  However, a recent decision of the Court of Justice of the European Union (CJEU) in December 2014 (C-212/13)[3]  (http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62013CJ0212) found that video surveillance by an individual of a public area outside his home fell under the Data Protection Directive. The Court found that as the CCTV also monitored a public space, it did not amount to the processing of data in the course of a purely personal or household activity, for the purposes of the “household exemption”.  As a result, anyone intending to use a drone should ensure that it does not inadvertently capture personal data from third persons as this will mean that thet Data Protection Acts will apply and drone operators will have to ensure that the safeguards and obligations set out below are met. Personal data would include, for instance, facial images or car registration plates. ",
+    "Proportionality - What data can be captured?" : "Section 2(1)(c)(iii) of the Acts require that data shall be \"adequate, relevant and not excessive\" for the purpose for which they are collected. This means that the data from such processing should be limited to what is strictly necessary to achieve a specific purpose (s). Under this principle, drones equipped with different technologies for data collection (camera, thermal imaging, GPS, altimeter, motion, radio frequency equipment and other sensors) should only collect information that is necessary for achieving the purpose pursued by this collection. For example, a camera on a drone which serves to take aerial photographs of landscapes should not be used for recording faces or other personal information. At all times, drone operators should ensure that their collection and processing of personal data is minimised to only that necessary or as a consequence of the job being undertaken. Similarly, only those images of the quality or resolution necessary should be captured.  Where personal data is likely to also be captured by sensor equipment  operators should consider what other measures may be required to limit unnecessary capture and processing. This may take the form of usage of a lower resolution camera; only using still images rather than video images; using a live stream rather than recording; or not using photographic imagery at all if in fact say a heat or measurement survey is being undertaken. It is important that the drone operator is aware of the data collected by the drone and how it operates. It is also important to note that data captured may become personal data after capture if it is combined with other data. So, whilst camera systems are the most obvious use of drones, other sensors may record non-personal data that when combined with other data may identify individuals. E.g., if radio data has been collected for instance, operators should ensure that no equipment identifiers or radio content are stored alongside location.  ",
+    "Recommended steps" : "There are several practical steps you can take to ensure that you comply with the data protection regulations when using drones;      Ensure you have the consent of the individuals whose personal data you will capture, by making timely use of notifications, signage, media, or publicity     Ensure that the drones are operated only with the sensor equipment necessary to achieve the purposes for which they are intended, and only record the personal data required to achieve the purposes intended and for which consent has been obtained     Have robust security and access controls in place ensuring only authorised persons have access to the images. Ensure that any transfer of personal data is secured and is possible with the consent already obtained     Consider mechanisms that automatically blur faces when they are inadvertently filmed during a data collection, or other means to ensure that unintended capture of personal data is avoided, or removed before further processing occurs     Use a software programme that automatically deletes the remaining personal data collected once the task is completed",
+    "Security" : "Section 2(1)(d) of the Data Protection Acts requires that “ appropriate security measures shall be taken” in relation to data. Any data captured should be stored in a appropriately secured environment. Access to the data should be controlled, logged and monitored. This may mean storing imagery or footage on a secure or encrypted medium and only to authenticated and authorised users. Where a drone operator is undertaking work on behalf of a client, the personal data transmitted and captured by the drone should be secured while in their possession and not retained after handover to a client. Personal data in data transmitted to a “base station” should also be similarly secured. Operators and controllers should remain vigilant about “eaves dropping”, remote control interference and other forms of possible attack when they are remotely operating their vehicles. Where unauthorised access or capture of this personal data has taken place a “breach” may have occurred and steps to secure the data, inform those involved and perhaps contact the data protection authority may be needed. Operators and data controllers should have policies, procedures and training in place, so that staff can take the appropriate action should a data breach occur.",
+    "Storage and retention" : "Section 2(1)(c)(iv) of the Data Protection Acts states that data \"shall not be kept for longer than is necessary for\" the purposes for which they were obtained.  A data controller needs to be able to justify this retention period. For example imagery and video footage containing personal data that is no longer needed, or where it has been inadvertently captured should be deleted. It may alternatively be possible to use anonymisation techniques. This may take the form of blurring or pixilation of facial images or registration plates for instance. Care should be taken where anonymisation is undertaken as other data held alongside, such as equipment or radio identifiers or location data may allow re-identification when combined with the anonymised data.",
+    "Supply of Data to An Garda Síochána" : "The same issues that arise from CCTV capture and processing also apply to personal data that may be captured and processed during drone usage. Please refer to the guidance on CCTV systems with regards to supply of data to An Garda Síochána",
+    "Those using drones for commercial purposes should also" : "     Ensure that a Privacy Impact Assessment (PIA) is completed prior to the use of same. This is effectively an audit of the proposed use of drone technology and takes account of the people and organisations involved, the purpose of the operation, the type of drone and the combination of sensing technology used, identifying the risks to personal data protection, the necessary safeguards to address those risks, and the measurement and adjustment of those safeguards when in use.     If required, ensure appropriate contracts are in place     Put a written Drone Usage Policy in place; which includes reference to the uses that may be made of the data processed retention and security of personal data being processed.     Ensure they comply with the proportionality and transparency rules outlined above.  The data protection issues which arise from the use of drones were also extensively examined by the Article 29 Working Party (which is a Working Party of European Data Protection Commissioners). This opinion can be located at: http://ec.europa.eu/justice/data-protection/article-29/documentation/opinion-recommendation/files/2015/wp231_en.pdf ",
+    "Transparency – notifying the public " : "In the case of drones, individuals may not be aware that they are being recorded or that a drone is equipped with recording equipment. Under Section 2D of the Acts it is necessary to do as much as possible to identify that recording is taking place, by whom, for what purpose and with whom the data may be shared. If necessary, the information should be made clear to the general public in the area in which the drone will operate by means of conspicuous signage, advertising posters, leaflet handouts, local newspaper and multi-channel/mode media campaigns and so on – whatever is necessary in order to ensure individuals are adequately and clearly informed before and during the flight, and that valid consent has been obtained. The dates and times of the flights, the flight path and the types of personal data (e.g. imagery, radio, geometry, location etc) that may be collected should accurately be described, along with the contact details of the operator and the data controller. Drones should be visible and identifiable visually.",
+    "Use of drones in a commercial setting" : "The use of Drones is extending into a number of other sectors, for instance:      Emergency services, such as An Garda Síochána, Fire Service, Ambulance Service or volunteer rescue teams     Aerial mapping     Infrastructure surveys     Aerial photography     Journalism     Advertisement"
+  },
+  "Useful links" : {
+    "Banggood" : "http://www.banggood.com/Wholesale-RC-Airplane-c-1855.html",
+    "Gumtree" : "https://www.gumtree.com/",
+    "HobbyKing" : "https://hobbyking.com/",
+    "IAA (Irish Aviation Authority)" : "https://www.iaa.ie/general-aviation/drones",
+    "NIAA (Northern Ireland Association of Areomodellers)" : "http://www.niaeromodellers.org.uk/",
+    "RC Airplane World" : "http://www.rc-airplane-world.com/flying-model-airplanes.html",
+    "RC advisor" : "http://rcadvisor.com/best-free-model-airplane-plans-websites",
+    "Wattflyer" : "http://www.wattflyer.com/forums/showthread.php?t=28083",
+    "ebay" : "http://www.ebay.ie"
+  },
   "users" : {
     "QJh4dgp2FkZYre5lPKvHO8c8KBu2" : {
       "models" : {
-        "dfv" : {
+        "Bilixar" : {
+          "fuelType" : "None",
+          "length" : 950,
+          "modelId" : 0,
+          "modelType" : "Glider",
+          "name" : "Bilixar",
+          "registrationId" : 0,
+          "width" : 1400
+        },
+        "Super Cub" : {
           "fuelType" : "Electric",
           "length" : 1000,
           "modelId" : 0,
-          "modelType" : "Waterplane",
-          "name" : "dfv",
+          "modelType" : "Airplane",
+          "name" : "Super Cub",
           "registrationId" : 0,
           "width" : 1000
         },
-        "kjlk" : {
+        "super" : {
           "fuelType" : "Electric",
-          "length" : 1234,
+          "length" : 76,
           "modelId" : 0,
           "modelType" : "Airplane",
-          "name" : "kjlk",
+          "name" : "super",
           "registrationId" : 0,
-          "width" : 1234
+          "width" : 56
         }
       }
     }

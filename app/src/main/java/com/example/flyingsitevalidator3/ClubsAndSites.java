@@ -3,10 +3,12 @@ package com.example.flyingsitevalidator3;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,6 +40,7 @@ public class ClubsAndSites extends AppCompatActivity {
         //Get reference to the database
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+
         //Check if the user is logged in
         if (mFirebaseUser == null) {
             // Not logged in, launch the Log In activity
@@ -46,6 +49,7 @@ public class ClubsAndSites extends AppCompatActivity {
             //Get the user id from the firebase user reference
             mUserId = mFirebaseUser.getUid();
 
+            Log.wtf("OutPut", mDatabase.getDatabase().toString());
             // Set up ListView
             final ListView listView = (ListView) findViewById(R.id.listView);
             final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1);
@@ -146,6 +150,7 @@ public class ClubsAndSites extends AppCompatActivity {
                     }
                 }
             });
+
 
 
         }
