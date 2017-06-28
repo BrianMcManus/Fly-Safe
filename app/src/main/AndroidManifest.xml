@@ -28,6 +28,7 @@
         <activity android:name=".UsefulLinksActivity"/>
         <activity android:name=".ContactUsActivity"/>
         <activity android:name=".ModelEligibilityMap"/>
+        <activity android:name=".FlyingTipsActivityNew"/>
         <activity
             android:name=".WelcomeScreen"
             android:configChanges="orientation|screenSize|keyboardHidden"

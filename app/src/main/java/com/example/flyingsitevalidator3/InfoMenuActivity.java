@@ -79,7 +79,7 @@ public class InfoMenuActivity extends AppCompatActivity {
             tvFT.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(InfoMenuActivity.this, FlyingTipsActivity.class);
+                    Intent intent = new Intent(InfoMenuActivity.this, FlyingTipsActivityNew.class);
                     startActivity(intent);
                 }
             });

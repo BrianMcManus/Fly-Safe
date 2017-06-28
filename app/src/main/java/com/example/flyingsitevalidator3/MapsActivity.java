@@ -795,6 +795,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         newPolygon.add(new LatLng(51.438062, -9.500841));*/
 
         //More accurate outline points for Irelands Coastline
+        //0-20
         newPolygon.add(new LatLng(54.029324, -6.366316));
         newPolygon.add(new LatLng(53.997853, -6.102644));
         newPolygon.add(new LatLng(54.089777, -6.259199));
@@ -815,6 +816,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         newPolygon.add(new LatLng(55.224940, -6.140012));
         newPolygon.add(new LatLng(55.204962, -6.234083));
         newPolygon.add(new LatLng(55.230423, -6.295194));
+
+        //21-40
         newPolygon.add(new LatLng(55.229639, -6.310300));
         newPolygon.add(new LatLng(55.239036, -6.332960));
         newPolygon.add(new LatLng(55.248235, -6.471662));
@@ -835,6 +838,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         newPolygon.add(new LatLng(55.054019, -7.578843));
         newPolygon.add(new LatLng(55.038677, -7.648194));
         newPolygon.add(new LatLng(55.132212, -7.521165));
+
+        //41-60
         newPolygon.add(new LatLng(55.202415, -7.625535));
         newPolygon.add(new LatLng(55.231010, -7.604249));
         newPolygon.add(new LatLng(55.280318, -7.644761));
@@ -855,6 +860,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         newPolygon.add(new LatLng(54.068450, -9.962279));
         newPolygon.add(new LatLng(53.978094, -10.242430));
         newPolygon.add(new LatLng(53.881067, -9.577757));
+
+        //61-80
         newPolygon.add(new LatLng(53.783813, -9.572264));
         newPolygon.add(new LatLng(53.757841, -9.896361));
         newPolygon.add(new LatLng(53.608188, -9.874388));
@@ -875,6 +882,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         newPolygon.add(new LatLng(52.385025, -9.830443));
         newPolygon.add(new LatLng(52.277606, -9.863402));
         newPolygon.add(new LatLng(52.183400, -10.462157));
+
+        //81-100
         newPolygon.add(new LatLng(52.099119, -10.451171));
         newPolygon.add(new LatLng(52.159817, -9.781005));
         newPolygon.add(new LatLng(51.882632, -10.423705));
@@ -895,6 +904,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         newPolygon.add(new LatLng(51.567035, -9.007842));
         newPolygon.add(new LatLng(51.531168, -8.950164));
         newPolygon.add(new LatLng(51.604580, -8.865019));
+
+        //101-120
         newPolygon.add(new LatLng(51.577278, -8.708464));
         newPolygon.add(new LatLng(51.654023, -8.670012));
         newPolygon.add(new LatLng(51.647311, -8.586119));
@@ -915,6 +926,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         newPolygon.add(new LatLng(52.039709, -7.568854));
         newPolygon.add(new LatLng(52.054067, -7.537268));
         newPolygon.add(new LatLng(52.064199, -7.638892));
+
+        //121-140
         newPolygon.add(new LatLng(52.099644, -7.579154));
         newPolygon.add(new LatLng(52.103862, -7.498130));
         newPolygon.add(new LatLng(52.130847, -7.428092));
@@ -935,6 +948,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         newPolygon.add(new LatLng(52.329942, -6.450290));
         newPolygon.add(new LatLng(52.363498, -6.418705));
         newPolygon.add(new LatLng(52.359305, -6.391239));
+
+        //141-160
         newPolygon.add(new LatLng(52.564304, -6.192112));
         newPolygon.add(new LatLng(52.630203, -6.229190));
         newPolygon.add(new LatLng(52.966481, -5.998478));
@@ -955,6 +970,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         newPolygon.add(new LatLng(53.956545, -6.378879));
         newPolygon.add(new LatLng(53.957353, -6.366520));
         newPolygon.add(new LatLng(53.979971, -6.367893));
+
+        //161-168
         newPolygon.add(new LatLng(53.997853, -6.345717));
         newPolygon.add(new LatLng(54.002293, -6.348493));
         newPolygon.add(new LatLng(54.004714, -6.345030));
