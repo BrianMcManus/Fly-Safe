@@ -11,7 +11,6 @@ import java.io.Serializable;
 //This class is used to represent a users RC Model, it implements serializable so the object can be packed into an intent
 public class Model implements Serializable{
 
-    private int modelId;
     private String name;
     private String modelType;
     private double width;
@@ -22,8 +21,7 @@ public class Model implements Serializable{
     public Model() {
     }
 
-    public Model(int modelId, String name, String modelType, double width, double length, String fuelType, int registrationId) {
-        this.modelId = modelId;
+    public Model(String name, String modelType, double width, double length, String fuelType, int registrationId) {
         this.name = name;
         this.modelType = modelType;
         this.width = width;
@@ -51,14 +49,6 @@ public class Model implements Serializable{
         intent.putExtra("length", len);
         intent.putExtra("fuelType", fuel);
         intent.putExtra("regNo", reg);
-    }
-
-    public int getModelId() {
-        return modelId;
-    }
-
-    public void setModelId(int modelId) {
-        this.modelId = modelId;
     }
 
     public String getName() {
@@ -116,7 +106,6 @@ public class Model implements Serializable{
 
         Model model = (Model) o;
 
-        if (modelId != model.modelId) return false;
         if (Double.compare(model.width, width) != 0) return false;
         if (Double.compare(model.length, length) != 0) return false;
         if (registrationId != model.registrationId) return false;
@@ -131,8 +120,7 @@ public class Model implements Serializable{
     public int hashCode() {
         int result;
         long temp;
-        result = modelId;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = name != null ? name.hashCode() : 0;
         result = 31 * result + (modelType != null ? modelType.hashCode() : 0);
         temp = Double.doubleToLongBits(width);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
@@ -146,8 +134,7 @@ public class Model implements Serializable{
     @Override
     public String toString() {
         return "Model{" +
-                "modelId=" + modelId +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", modelType='" + modelType + '\'' +
                 ", width=" + width +
                 ", length=" + length +
@@ -155,4 +142,6 @@ public class Model implements Serializable{
                 ", registrationId=" + registrationId +
                 '}';
     }
+
+
 }

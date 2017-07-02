@@ -113,7 +113,6 @@ public class Models extends AppCompatActivity {
                     if (mods.get(i).getName().equals(selectedFromList)) {
 
                         Model m = new Model();
-                        m.setModelId(mods.get(i).getModelId());
                         m.setName(mods.get(i).getName());
                         m.setWidth(mods.get(i).getWidth());
                         m.setLength(mods.get(i).getLength());
@@ -210,7 +209,6 @@ public class Models extends AppCompatActivity {
                     if (mods.get(i).getName().equals(selectedFromList.getName())) {
 
 
-                        m.setModelId(mods.get(i).getModelId());
                         m.setName(mods.get(i).getName());
                         m.setWidth(mods.get(i).getWidth());
                         m.setLength(mods.get(i).getLength());
@@ -256,8 +254,6 @@ public class Models extends AppCompatActivity {
 
                                     if (mods.get(i).getName().equals(selectedFromList)) {
 
-
-                                        m.setModelId(mods.get(i).getModelId());
                                         m.setName(mods.get(i).getName());
                                         m.setWidth(mods.get(i).getWidth());
                                         m.setLength(mods.get(i).getLength());

@@ -61,7 +61,7 @@ public class InfoMenuActivity extends AppCompatActivity {
             tvFAQ.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(InfoMenuActivity.this, FAQActivity.class);
+                    Intent intent = new Intent(InfoMenuActivity.this, FAQActivityNew.class);
                     startActivity(intent);
                 }
             });

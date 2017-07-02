@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -79,6 +80,23 @@ public class MainMenuActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+
+            //Get all the users models
+            Runnable run = new Runnable() {
+                @Override
+                public void run() {
+                    clubs = getClubs();
+                    //Toast.makeText(context, mods.toString(), Toast.LENGTH_LONG).show();
+                }
+            };
+            Thread thread = new Thread(run);
+            thread.start();
+            try {
+                thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             //
             //Get all the airport locations and details for distributing to other classes and place them in a list
                 new Thread(new Runnable() {
@@ -149,8 +167,9 @@ public class MainMenuActivity extends AppCompatActivity {
                     }
                     else if (position == 1) {
                         //Create an intent and put the airport locations inside then start the activity
-                        Intent intent = new Intent(mContext.getApplicationContext(), ClubsAndSites.class);
+                        Intent intent = new Intent(mContext.getApplicationContext(), ClubsAndSitesNew.class);
                         intent.putExtra("AllAirports_dataProvider", aMkr);
+                        intent.putExtra("Clubs_dataProvider", clubs);
                         mContext.startActivity(intent);
                     }
                     else if(position == 2)
@@ -249,9 +268,6 @@ public class MainMenuActivity extends AppCompatActivity {
                         if (dataSnapshot.child("modelId").getValue() != null) {
                             Model m = new Model();
 
-                            long l = (long) dataSnapshot.child("modelId").getValue();
-                            int id = (int)l ;
-                            m.setModelId(id);
                             m.setName((String) dataSnapshot.child("name").getValue());
                             m.setFuelType((String) dataSnapshot.child("fuelType").getValue());
                             double len = Double.parseDouble(dataSnapshot.child("length").getValue().toString());
@@ -290,5 +306,74 @@ public class MainMenuActivity extends AppCompatActivity {
 
 
         return models;
+    }
+
+    private ArrayList<Club> getClubs()
+    {
+        final ArrayList<Club> nClubs = new ArrayList<Club>();
+
+        // Use Firebase to populate the list of clubs and sites.
+        mDatabase.child("FlyingSites").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                if (dataSnapshot.child("name").getValue() != null) {
+
+                    //Add the name of the club to the list
+                    //adapter.add((String) dataSnapshot.child("name").getValue());
+
+                    //Create a Club object and populate its fields
+                    Club club = new Club();
+                    club.setShortName((String) dataSnapshot.getKey());
+                    club.setClubId((String) dataSnapshot.child("club_id").getValue());
+                    club.setName((String) dataSnapshot.child("name").getValue());
+                    club.setContact((String) dataSnapshot.child("contact").getValue());
+                    club.setCounty((String) dataSnapshot.child("county").getValue());
+
+                    try {
+                        double nLat = (double) dataSnapshot.child("lat").getValue();
+                        club.setLat(nLat);
+                    } catch (NumberFormatException e) {
+                        System.out.println((String) dataSnapshot.child("lat").getValue());
+                    }
+
+                    try {
+                        double nLon = (Double) dataSnapshot.child("lng").getValue();
+                        club.setLon(nLon);
+                    } catch (NumberFormatException e) {
+                        System.out.println((String) dataSnapshot.child("lng").getValue());
+                    }
+
+                    String url = (String) dataSnapshot.child("url").getValue();
+                    club.setUrl(url);
+
+                    nClubs.add(club);
+                    Log.wtf("Brian", nClubs.toString());
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("name").getValue() != null) {
+                    //adapter.remove((String) dataSnapshot.child("name").getValue());
+                }
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        return nClubs;
     }
 }

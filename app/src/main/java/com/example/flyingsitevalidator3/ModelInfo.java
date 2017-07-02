@@ -115,8 +115,11 @@ public class ModelInfo extends AppCompatActivity {
 
                         //Create a new Club object and populate it with data from the database and add it to the list
                         Club club = new Club();
+                        club.setShortName((String) dataSnapshot.getKey());
+                        club.setClubId((String) dataSnapshot.child("club_id").getValue());
                         club.setName((String) dataSnapshot.child("name").getValue());
-                        club.setAddress((String) dataSnapshot.child("address").getValue());
+                        club.setContact((String) dataSnapshot.child("contact").getValue());
+                        club.setCounty((String) dataSnapshot.child("county").getValue());
 
                         try {
                             double nLat = (double) dataSnapshot.child("lat").getValue();
@@ -125,9 +128,12 @@ public class ModelInfo extends AppCompatActivity {
                             System.out.println((String) dataSnapshot.child("lat").getValue());
                         }
 
-                        String nLon = (String) dataSnapshot.child("long").getValue();
-                        double dLon = Double.parseDouble(nLon);
-                        club.setLon(dLon);
+                        try {
+                        double nLon = (Double) dataSnapshot.child("lng").getValue();
+                        club.setLon(nLon);
+                        } catch (NumberFormatException e) {
+                            System.out.println((String) dataSnapshot.child("lng").getValue());
+                        }
 
                         String url = (String) dataSnapshot.child("url").getValue();
                         club.setUrl(url);

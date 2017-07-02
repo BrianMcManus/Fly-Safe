@@ -67,7 +67,6 @@ public class FlyingTipsActivityNew extends AppCompatActivity {
             expListView = (ExpandableListView) findViewById(R.id.lvExp);
 
             // preparing list data
-            //prepareListData();
             populateList();
 
             listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
@@ -135,48 +134,6 @@ public class FlyingTipsActivityNew extends AppCompatActivity {
         }
     }
 
-    /*
-     * Preparing the list data
-     */
-    private void prepareListData() {
-        listDataHeader = new ArrayList<String>();
-        //listDataChild = new HashMap<String, List<String>>();
-
-        // Adding child data
-        listDataHeader.add("Top 250");
-        listDataHeader.add("Now Showing");
-        listDataHeader.add("Coming Soon..");
-
-        // Adding child data
-        List<String> top250 = new ArrayList<String>();
-        top250.add("The Shawshank Redemption");
-        top250.add("The Godfather");
-        top250.add("The Godfather: Part II");
-        top250.add("Pulp Fiction");
-        top250.add("The Good, the Bad and the Ugly");
-        top250.add("The Dark Knight");
-        top250.add("12 Angry Men");
-
-        List<String> nowShowing = new ArrayList<String>();
-        nowShowing.add("The Conjuring");
-        nowShowing.add("Despicable Me 2");
-        nowShowing.add("Turbo");
-        nowShowing.add("Grown Ups 2");
-        nowShowing.add("Red 2");
-        nowShowing.add("The Wolverine");
-
-        List<String> comingSoon = new ArrayList<String>();
-        comingSoon.add("2 Guns");
-        comingSoon.add("The Smurfs 2");
-        comingSoon.add("The Spectacular Now");
-        comingSoon.add("The Canyons");
-        comingSoon.add("Europa Report");
-
-        /*listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), nowShowing);
-        listDataChild.put(listDataHeader.get(2), comingSoon);*/
-    }
-
 
     /*
      * Preparing the list data
@@ -192,28 +149,30 @@ public class FlyingTipsActivityNew extends AppCompatActivity {
         listDataHeader.add("After repair");
         listDataHeader.add("Before EVERY flight");
 
+
         // Use Firebase to populate the learning to fly list
         mDatabase.child("Flying Tips").child("Learning To Fly").addChildEventListener(new ChildEventListener() {
 
+            ArrayList<ListItem> items1 = new ArrayList<ListItem>();
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //items = new ArrayList<ListItem>();
+
                 if (dataSnapshot.child("Title") != null) {
 
                     ListItem item = new ListItem(dataSnapshot.child("Title").getValue().toString(),dataSnapshot.child("Content").getValue().toString());
-                    items.add(item);
+                    items1.add(item);
 
-                    Log.wtf("Brian'sERROR", items.toString());
+                    Log.wtf("Brian'sERROR", items1.toString());
 
                 }
 
-                listDataChild.put("Learning To Fly", items);
+                listDataChild.put("Learning To Fly", items1);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("Title") != null) {
-                    items.remove((String) dataSnapshot.child("name").getValue());
+                    items1.remove((String) dataSnapshot.child("Title").getValue());
                 }
             }
 
@@ -227,28 +186,29 @@ public class FlyingTipsActivityNew extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         });
 
+
         // Use Firebase to populate the Pre-flight Checklist list
         mDatabase.child("Flying Tips").child("Pre-flight Checklist").addChildEventListener(new ChildEventListener() {
-
+            ArrayList<ListItem> items2 = new ArrayList<ListItem>();
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //items = new ArrayList<ListItem>();
+
                 if (dataSnapshot.child("Title") != null) {
 
                     ListItem item = new ListItem(dataSnapshot.child("Title").getValue().toString(),dataSnapshot.child("Content").getValue().toString());
-                    items.add(item);
+                    items2.add(item);
 
-                    Log.wtf("Brian'sERROR", items.toString());
+                    Log.wtf("Brian'sERROR", items2.toString());
 
                 }
 
-                listDataChild.put("Pre-flight Checklist", items);
+                listDataChild.put("Pre-flight Checklist", items2);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("Title") != null) {
-                    items.remove((String) dataSnapshot.child("name").getValue());
+                    items2.remove((String) dataSnapshot.child("Title").getValue());
                 }
             }
 
@@ -264,26 +224,26 @@ public class FlyingTipsActivityNew extends AppCompatActivity {
 
         // Use Firebase to populate the After repair list
         mDatabase.child("Flying Tips").child("After repair").addChildEventListener(new ChildEventListener() {
-
+            ArrayList<ListItem> items3 = new ArrayList<ListItem>();
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //items = new ArrayList<ListItem>();
+
                 if (dataSnapshot.child("Title") != null) {
 
                     ListItem item = new ListItem(dataSnapshot.child("Title").getValue().toString(),dataSnapshot.child("Content").getValue().toString());
-                    items.add(item);
+                    items3.add(item);
 
-                    Log.wtf("Brian'sERROR", items.toString());
+                    Log.wtf("Brian'sERROR", items3.toString());
 
                 }
 
-                listDataChild.put("After repair", items);
+                listDataChild.put("After repair", items3);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("Title") != null) {
-                    items.remove((String) dataSnapshot.child("name").getValue());
+                    items3.remove((String) dataSnapshot.child("Title").getValue());
                 }
             }
 
@@ -299,10 +259,10 @@ public class FlyingTipsActivityNew extends AppCompatActivity {
 
         // Use Firebase to populate the Before EVERY flight list
         mDatabase.child("Flying Tips").child("Before EVERY flight").addChildEventListener(new ChildEventListener() {
-
+            ArrayList<ListItem> items = new ArrayList<ListItem>();
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //items = new ArrayList<ListItem>();
+
                 if (dataSnapshot.child("Title") != null) {
 
                     ListItem item = new ListItem(dataSnapshot.child("Title").getValue().toString(),dataSnapshot.child("Content").getValue().toString());

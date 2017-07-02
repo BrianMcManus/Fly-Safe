@@ -287,7 +287,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         double lat = items1.get(i).getLat();
                         double lon = items1.get(i).getLon();
                         String name = items1.get(i).getName();
-                        String address = items1.get(i).getAddress();
+                        String address = items1.get(i).getCounty();
                         createMarker(lat, lon, name, address, items1.get(i).getUrl());
                     }
                 }
@@ -297,7 +297,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 double lat = items1.get(i).getLat();
                 double lon = items1.get(i).getLon();
                 String name = items1.get(i).getName();
-                String address = items1.get(i).getAddress();
+                String address = items1.get(i).getCounty();
                 createMarker(lat, lon, name, address, items1.get(i).getUrl());
             }
 

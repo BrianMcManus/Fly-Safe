@@ -25,9 +25,10 @@
         <item>Glider</item>
         <item>Blimp</item>
         <item>Waterplane</item>
-        <item>Multicopters</item>
+        <item>Multicopter</item>
         <item>Autogyro</item>
-        <item>Ornithopters</item>
+        <item>Ornithopter</item>
+        <item>Drone</item>
         <item>Other</item>
     </string-array>
 

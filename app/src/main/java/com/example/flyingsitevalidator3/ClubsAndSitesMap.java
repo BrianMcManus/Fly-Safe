@@ -3,6 +3,7 @@ package com.example.flyingsitevalidator3;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -13,19 +14,23 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.*;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
 /**
- * Created by Brian on 14/04/2017.
+ * Created by brian on 01/07/2017.
  */
 
-public class ModelEligibilityMap extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
+public class ClubsAndSitesMap extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     private GoogleMap mMap;
+    LatLng ll;
     private ArrayList<Club> clubs = new ArrayList<Club>();
-    private Model model = new Model();
+    private ArrayList<Club> items1;
+
 
 
     @Override
@@ -60,6 +65,7 @@ public class ModelEligibilityMap extends FragmentActivity implements OnMapReadyC
         super.onPause();
     }
 
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -70,52 +76,48 @@ public class ModelEligibilityMap extends FragmentActivity implements OnMapReadyC
 
         //Get the information sent through the intent and place in a new Intent object
         Intent intent = getIntent();
-        Bundle bundle = intent.getBundleExtra("ModelBundle");
-        //Create a model object from the model information sent through the intent
-        model = (Model) bundle.getSerializable("ModelDataProvider");
-        //Populate the club list with the club list sent in the intent
-        clubs = (ArrayList<Club>) intent.getSerializableExtra("ClubDataProvider");
 
-        /*Create a new club object and for each club in the club list check the clubs restriction if any
-         * and if it matches we create a "no-fly" marker and place it on the map, otherwise we place a standard
-          * club marker*/
-        Club club;
-        for(int i = 0; i< clubs.size(); i++) {
-            club = (Club) clubs.get(i);
-            if (!club.getRestriction().equalsIgnoreCase("None")) {
-                if (club.getRestriction().equalsIgnoreCase(model.getModelType())) {
-                    //This check is for gliders that have motors on them, if they do they are not eligable for the glider sites
 
-                    if(club.getRestriction().equalsIgnoreCase("Glider") && model.getModelType().equalsIgnoreCase("Glider"))
-                    {
-                        if(model.getFuelType().equalsIgnoreCase("None"))
-                        {
-                            createMarker(club.getLat(), club.getLon(), club.getName(), club.getCounty(), club.getUrl());
-                        }
-                        else
-                        {
-                            createNoFlyMarker(club.getLat(), club.getLon(), club.getName(), club.getCounty(), club.getUrl());
-                        }
-                    }
-                    else
-                    {
-                        createMarker(club.getLat(), club.getLon(), club.getName(), club.getCounty(), club.getUrl());
-                    }
 
-                } else {
-                    createNoFlyMarker(club.getLat(), club.getLon(), club.getName(), club.getCounty(), club.getUrl());
-                }
-            } else {
-                createMarker(club.getLat(), club.getLon(), club.getName(), club.getCounty(), club.getUrl());
+        //Check if the intent is for individual flying site if it is then enter
+        if (intent.getSerializableExtra("AllSites_dataProvider") == null && intent.getParcelableExtra("longLat_dataProvider") != null) {
+
+            //Populate the club list with the club list sent in the intent
+            clubs = (ArrayList<Club>) intent.getSerializableExtra("ClubDataProvider");
+
+            //Alert the user that they should check in with club officials before flying at any of the sites
+            Toast.makeText(this, "Be sure to check-in with club officals before attending", Toast.LENGTH_LONG);
+
+            //Create a lat/lng object from the club position taken from the intent
+            ll = intent.getParcelableExtra("longLat_dataProvider");
+            //Take the club name, address and website address from the intent and place them in variables
+            final String iName = intent.getExtras().getString("name_dataProvider");
+            final String iAddress = intent.getExtras().getString("address_dataProvider");
+            final String iUrl = intent.getExtras().getString(("url_dataProvider"));
+
+            createMarker(ll.latitude, ll.longitude, iName, iAddress, iUrl);
+
+            //Check if the intent is for all available flying site if it is then enter
+        } else if (intent.getSerializableExtra("AllSites_dataProvider") != null && intent.getParcelableExtra("longLat_dataProvider") == null) {
+
+            //Alert the user that they should check in with club officials before flying at any of the sites
+            Toast.makeText(this, "Be sure to check-in with club officals before attending", Toast.LENGTH_LONG);
+            //Populate the list with the list of clubs taken from the intent
+            clubs = (ArrayList<Club>) intent.getSerializableExtra("AllSites_dataProvider");
+
+            for (int i = 0; i < clubs.size(); i++) {
+                double lat = clubs.get(i).getLat();
+                double lon = clubs.get(i).getLon();
+                String name = clubs.get(i).getName();
+                String address = clubs.get(i).getCounty();
+                createMarker(lat, lon, name, address, clubs.get(i).getUrl());
             }
         }
-
-
     }
 
     /*When an info window is clicked we extract the title of the club and cycle through the club list to find a match
-    * when one is found we check if it has a url attached, if it does we send the user to the website, if not we alert
-    * the user that the club does not own a website through a toast*/
+       * when one is found we check if it has a url attached, if it does we send the user to the website, if not we alert
+       * the user that the club does not own a website through a toast*/
     @Override
     public void onInfoWindowClick(com.google.android.gms.maps.model.Marker marker) {
 
@@ -128,9 +130,7 @@ public class ModelEligibilityMap extends FragmentActivity implements OnMapReadyC
                             Uri uri = Uri.parse(url);
                             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                             startActivity(intent);
-                        }
-                        else
-                        {
+                        } else {
                             Toast.makeText(this, "Sorry there is no website available for this club", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -148,6 +148,7 @@ public class ModelEligibilityMap extends FragmentActivity implements OnMapReadyC
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
 
     }
+
 
     /*This method creates a standard custom club marker, it takes in the latitude and longitude coordinates to place the marker in
     * the correct position on the map, it also takes in the name of the club, as well as that the clubs address is contained in the snippet variable
@@ -189,42 +190,4 @@ public class ModelEligibilityMap extends FragmentActivity implements OnMapReadyC
 
     }
 
-    /*This method creates a variant of a custom club marker, it takes in the latitude and longitude coordinates to place the marker in
-    * the correct position on the map, it also takes in the name of the club, as well as that the clubs address is contained in the snippet variable
-    * and if there is one present the url variable will contain the clubs website address*/
-    protected void createNoFlyMarker(final double latitude, final double longitude, final String title, final String snippet, final String url) {
-
-
-        //Set the size of the marker
-        int height = 100;
-        int width = 100;
-
-        //Get the marker image and create the custom marker with the no-fly marker image
-        BitmapDrawable bitmapdraw = (BitmapDrawable) ContextCompat.getDrawable(getApplicationContext(), R.drawable.airplane_no_fly_marker);
-        Bitmap b = bitmapdraw.getBitmap();
-        Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
-
-        //If the url is not null(The club has a website)
-        if (url != null) {
-            com.google.android.gms.maps.model.Marker m = mMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(latitude, longitude))
-                    .anchor(0.5f, 0.5f)
-                    .title(title)
-                    .snippet(snippet + " " +  url)
-                    .icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
-
-            //Set the listener to listen for a click on the info window and if it is open the browser and navigate to the website
-            mMap.setOnInfoWindowClickListener(this);
-
-        } else {
-            //Create a new marker with all the clubs information displayed
-            mMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(latitude, longitude))
-                    .anchor(0.5f, 0.5f)
-                    .title(title)
-                    .snippet(snippet)
-                    .icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
-        }
-
-    }
 }

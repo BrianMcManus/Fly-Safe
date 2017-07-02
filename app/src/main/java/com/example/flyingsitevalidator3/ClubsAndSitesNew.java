@@ -1,16 +1,17 @@
 package com.example.flyingsitevalidator3;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
-import android.view.*;
-import android.widget.AdapterView;
+import android.view.Menu;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -20,14 +21,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
-public class ClubsAndSites extends AppCompatActivity {
+/**
+ * Created by brian on 30/06/2017.
+ */
+
+public class ClubsAndSitesNew extends AppCompatActivity{
 
     private ArrayList<Club> clubs = new ArrayList<Club>();
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
     private DatabaseReference mDatabase;
     private String mUserId;
+    private EditText editsearch;
+    ClubListAdapter adapter;
+    Context mContext = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,78 +58,48 @@ public class ClubsAndSites extends AppCompatActivity {
             //Get the user id from the firebase user reference
             mUserId = mFirebaseUser.getUid();
 
-            Log.wtf("OutPut", mDatabase.getDatabase().toString());
+            Intent intent = getIntent();
+            Bundle b = intent.getExtras();
+            clubs = (ArrayList<Club>)  b.getSerializable("Clubs_dataProvider");
+
+
             // Set up ListView
             final ListView listView = (ListView) findViewById(R.id.listView);
-            final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1);
+            adapter = new ClubListAdapter(mContext, clubs);
             listView.setAdapter(adapter);
+            //adapter.add("All Sites");
 
+            // Locate the EditText in listview_main.xml
+            editsearch = (EditText) findViewById(R.id.search);
 
-            adapter.add("All Sites");
-
-            // Use Firebase to populate the list of clubs and sites.
-            mDatabase.child("FlyingSites").addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    if (dataSnapshot.child("name").getValue() != null) {
-
-                        //Add the name of the club to the list
-                        adapter.add((String) dataSnapshot.child("name").getValue());
-
-                        //Create a Club object and populate its fields
-                        Club club = new Club();
-                        club.setShortName((String) dataSnapshot.getKey());
-                        club.setClubId((String) dataSnapshot.child("club_id").getValue());
-                        club.setName((String) dataSnapshot.child("name").getValue());
-                        club.setContact((String) dataSnapshot.child("contact").getValue());
-                        club.setCounty((String) dataSnapshot.child("county").getValue());
-
-                        try {
-                            double nLat = (double) dataSnapshot.child("lat").getValue();
-                            club.setLat(nLat);
-                        } catch (NumberFormatException e) {
-                            System.out.println((String) dataSnapshot.child("lat").getValue());
-                        }
-
-                        try {
-                        double nLon = (Double) dataSnapshot.child("lng").getValue();
-                        club.setLon(nLon);
-                        } catch (NumberFormatException e) {
-                            System.out.println((String) dataSnapshot.child("lng").getValue());
-                        }
-
-                        String url = (String) dataSnapshot.child("url").getValue();
-                        club.setUrl(url);
-
-                        clubs.add(club);
-                    }
-                }
+            // Capture Text in EditText
+            editsearch.addTextChangedListener(new TextWatcher() {
 
                 @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                public void afterTextChanged(Editable arg0) {
+                    // TODO Auto-generated method stub
+                    String text = editsearch.getText().toString().toLowerCase(Locale.getDefault());
+                    adapter.filter(text);
 
                 }
 
                 @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.child("name").getValue() != null) {
-                        adapter.remove((String) dataSnapshot.child("name").getValue());
-                    }
+                public void beforeTextChanged(CharSequence arg0, int arg1,
+                                              int arg2, int arg3) {
+                    // TODO Auto-generated method stub
                 }
 
                 @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+                                          int arg3) {
+                    // TODO Auto-generated method stub
 
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
+                    /*String text = editsearch.getText().toString().toLowerCase(Locale.getDefault());
+                    adapter.filter(text);*/
                 }
             });
 
-
-            //Set the click listener for the club list
+            /*//Set the click listener for the club list
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -158,7 +137,7 @@ public class ClubsAndSites extends AppCompatActivity {
                     }
                 }
             });
-
+*/
 
 
         }
