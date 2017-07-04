@@ -471,6 +471,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //mMap.clear();
         userposition.remove();
         createPositionMarker(location);
+
+        //Check if the user has entered a dangerous area after location update
+       /* boolean isValid = validateAirportDistance(location, items);
+        if(!isValid)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("You have just entered a dangerous flying area, please don't fly at this location")
+                    .setCancelable(false)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }*/
+
     }
 
     //This method requests updates of the users position every 1-10 seconds
@@ -490,6 +507,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         float zoomLevel = (float) zoom; //This goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
 
+    }
+
+    public boolean validateAirportDistance(final Location location, final ArrayList<AirportMarker> locations) {
+
+        //Check the location postion against all airport entries in the list
+        boolean valid = true;
+        for (int i = 0; i < locations.size(); i++) {
+
+            Location b = new Location("");
+            b.setLatitude(locations.get(i).getLat());
+            b.setLongitude(locations.get(i).getLon());
+
+            float distance = location.distanceTo(b);
+
+
+            if (distance <= 5000) {
+                valid = false;
+                break;
+            }
+        }
+
+        return valid;
+    }
+
+    public boolean validateDangersDistance(final Location location)
+    {
+        boolean valid = true;
+
+        return valid;
     }
 
     //This method is used to validate the distance between the location coordinates taken in and airports in the area or other structures which are deemed unsafe to fly around
