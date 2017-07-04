@@ -1,6 +1,8 @@
 package com.example.flyingsitevalidator3;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -61,6 +63,19 @@ public class MainMenuActivity extends AppCompatActivity {
             // Not logged in, launch the Log In activity
             loadLogInView();
         } else {
+
+            Intent intent = getIntent();
+            boolean isShown = intent.getBooleanExtra("welcomeShown", true);
+            if(!isShown)
+            {
+                new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("How to use Fly-Safe").setMessage("Welcome to Fly-Safe, We are here to help you find your perfect flying location which is safe and fun. While using Fly-Safe please pay particular attention to the rules and regulations of flying, this app gives a good indication of how safe a site is but it is up to you to ensure the site does not break any rules, Please see IAA.ie or the information section of this app to see rules and regulations.").setPositiveButton(
+                        "Press to continue...", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+
+                            }
+                        }).show();
+            }
             //Get the users id
             mUserId = mFirebaseUser.getUid();
 
@@ -99,51 +114,53 @@ public class MainMenuActivity extends AppCompatActivity {
 
             //
             //Get all the airport locations and details for distributing to other classes and place them in a list
-                new Thread(new Runnable() {
-                    public void run() {
-                        // Use Firebase to get airport values.
-                        mDatabase.child("Airports").addChildEventListener(new ChildEventListener() {
-                            @Override
-                            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                                if (dataSnapshot.child("name").getValue() != null) {
-                                    AirportMarker item = new AirportMarker();
-                                    item.setName((String) dataSnapshot.child("name").getValue());
+            new Thread(new Runnable() {
+                public void run() {
+                    // Use Firebase to get airport values.
+                    mDatabase.child("Airports").addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            if (dataSnapshot.child("name").getValue() != null) {
+                                AirportMarker item = new AirportMarker();
+                                item.setName((String) dataSnapshot.child("name").getValue());
 
-                                    try {
-                                        double nLat = (double) dataSnapshot.child("lat").getValue();
-                                        item.setLat(nLat);
-                                    } catch (NumberFormatException e) {
-                                        System.out.println((String) dataSnapshot.child("lat").getValue());
-                                    }
-
-                                    try {
-                                        double nLon = (double) dataSnapshot.child("long").getValue();
-                                        item.setLon(nLon);
-                                    } catch (NumberFormatException e) {
-                                        System.out.println((String) dataSnapshot.child("lat").getValue());
-                                    }
-
-
-                                    aMkr.add(item);
+                                try {
+                                    double nLat = (double) dataSnapshot.child("lat").getValue();
+                                    item.setLat(nLat);
+                                } catch (NumberFormatException e) {
+                                    System.out.println((String) dataSnapshot.child("lat").getValue());
                                 }
+
+                                try {
+                                    double nLon = (double) dataSnapshot.child("long").getValue();
+                                    item.setLon(nLon);
+                                } catch (NumberFormatException e) {
+                                    System.out.println((String) dataSnapshot.child("lat").getValue());
+                                }
+
+
+                                aMkr.add(item);
                             }
+                        }
 
-                            @Override
-                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                        }
 
-                            @Override
-                            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+                        }
 
-                            @Override
-                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                        }
 
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {}
-                        });
-                    }
-                }).start();
-
-
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                        }
+                    });
+                }
+            }).start();
 
 
             //Set up the grid-view
@@ -164,30 +181,24 @@ public class MainMenuActivity extends AppCompatActivity {
                         Intent intent = new Intent(mContext.getApplicationContext(), MapsActivity.class);
                         intent.putExtra("AllAirports_dataProvider", aMkr);
                         mContext.startActivity(intent);
-                    }
-                    else if (position == 1) {
+                    } else if (position == 1) {
                         //Create an intent and put the airport locations inside then start the activity
                         Intent intent = new Intent(mContext.getApplicationContext(), ClubsAndSitesNew.class);
                         intent.putExtra("AllAirports_dataProvider", aMkr);
                         intent.putExtra("Clubs_dataProvider", clubs);
                         mContext.startActivity(intent);
-                    }
-                    else if(position == 2)
-                    {
+                    } else if (position == 2) {
                         //Create an intent and put the users models inside then start the activity
                         Intent modIntent = new Intent(mContext, Models.class);
                         Bundle b = new Bundle();
                         b.putSerializable("AllModels_dataProvider", mods);
                         modIntent.putExtras(b);
                         mContext.startActivity(modIntent);
-                    }
-                    else if(position == 3)
-                    {
+                    } else if (position == 3) {
                         //Create an intent then start the activity
                         Intent infoIntent = new Intent(mContext.getApplicationContext(), InfoMenuActivity.class);
                         mContext.startActivity(infoIntent);
-                    }
-                    else if (position == 4) {
+                    } else if (position == 4) {
                         //Create an intent and start the activity to initialise the web browser and direct to the registration site
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.asset-international.com/asset/account/login.jsf"));
                         mContext.startActivity(browserIntent);
@@ -245,71 +256,67 @@ public class MainMenuActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         stopService();
-        Toast.makeText(this, "Service destroyed",
-                Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Service destroyed", Toast.LENGTH_LONG).show();
 
     }
 
-    private void writeNewModel(String userId, Model model)
-    {
+    private void writeNewModel(String userId, Model model) {
         //String id = model.getModelId() + "";
         //mDatabase.child("users").child(userId).child("models").push().setValue(model);
     }
 
-    private ArrayList<Model> getModels(final String userId)
-    {
+    private ArrayList<Model> getModels(final String userId) {
         final ArrayList<Model> models = new ArrayList<Model>();
 
-                mDatabase.child("users").child(userId).child("models").addChildEventListener(new ChildEventListener() {
+        mDatabase.child("users").child(userId).child("models").addChildEventListener(new ChildEventListener() {
 
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                        if (dataSnapshot.child("modelId").getValue() != null) {
-                            Model m = new Model();
+                if (dataSnapshot.child("modelId").getValue() != null) {
+                    Model m = new Model();
 
-                            m.setName((String) dataSnapshot.child("name").getValue());
-                            m.setFuelType((String) dataSnapshot.child("fuelType").getValue());
-                            double len = Double.parseDouble(dataSnapshot.child("length").getValue().toString());
-                            m.setLength(len);
-                            double width = (double) Double.parseDouble(dataSnapshot.child("width").getValue().toString());
-                            m.setWidth(width);
-                            m.setModelType((String) dataSnapshot.child("modelType").getValue());
-                            long reg = (long) dataSnapshot.child("registrationId").getValue();
-                            m.setRegistrationId((int) reg);
+                    m.setName((String) dataSnapshot.child("name").getValue());
+                    m.setFuelType((String) dataSnapshot.child("fuelType").getValue());
+                    double len = Double.parseDouble(dataSnapshot.child("length").getValue().toString());
+                    m.setLength(len);
+                    double width = (double) Double.parseDouble(dataSnapshot.child("width").getValue().toString());
+                    m.setWidth(width);
+                    m.setModelType((String) dataSnapshot.child("modelType").getValue());
+                    long reg = (long) dataSnapshot.child("registrationId").getValue();
+                    m.setRegistrationId((int) reg);
 
-                            models.add(m);
-                        }
+                    models.add(m);
+                }
 
-                    }
+            }
 
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-                    }
+            }
 
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-                    }
+            }
 
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-                    }
+            }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                    }
-                });
+            }
+        });
 
 
         return models;
     }
 
-    private ArrayList<Club> getClubs()
-    {
+    private ArrayList<Club> getClubs() {
         final ArrayList<Club> nClubs = new ArrayList<Club>();
 
         // Use Firebase to populate the list of clubs and sites.

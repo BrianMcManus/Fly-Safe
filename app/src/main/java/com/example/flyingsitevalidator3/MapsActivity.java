@@ -27,13 +27,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.Circle;
-import com.google.android.gms.maps.model.CircleOptions;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polygon;
-import com.google.android.gms.maps.model.PolygonOptions;
+import com.google.android.gms.maps.model.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -68,6 +62,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     JSONObject jObject;
     Location loc;
     LatLng ll;
+    com.google.android.gms.maps.model.Marker userposition;
 
 
     @Override
@@ -194,16 +189,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
 
                 //Place a marker on the map in the spot where the user clicked
-                mMap.addMarker(new MarkerOptions()
+                createMarker(position.latitude, position.longitude, "Your Chosen Site", "Please be sure to check rules before flying here", "");
+               /* mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(position.latitude, position.longitude))
                         .anchor(0.5f, 0.5f)
-                        .title("Your chosen site"));
+                        .title("Your chosen site"));*/
             }
         });
 
 
         //Check if the intent is for individual flying site if it is then enter
-        if (intent.getSerializableExtra("AllSites_dataProvider") == null && intent.getParcelableExtra("longLat_dataProvider") != null) {
+        /*if (intent.getSerializableExtra("AllSites_dataProvider") == null && intent.getParcelableExtra("longLat_dataProvider") != null) {
 
             //Alert the user that they should check in with club officials before flying at any of the sites
             Toast.makeText(this, "Be sure to check-in with club officals before attending", Toast.LENGTH_LONG);
@@ -302,7 +298,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
 
 
-        }
+        }*/
 
 
     }
@@ -366,6 +362,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
+
+
+
     //Used in the early stages of the project to locate airports more easily by placing markers on the map
     protected void createAirportMarker(double latitude, double longitude, String title) {
         mMap.addMarker(new MarkerOptions()
@@ -385,7 +384,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .visible(false);
         //.fillColor(Color.RED);
         Circle circle = mMap.addCircle(circleOptions);
+    }
 
+
+    protected void createPositionMarker(final Location location) {
+        // Add users location to the map
+        userposition = mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(location.getLatitude(), location.getLongitude()))
+                .anchor(0.5f, 0.5f)
+                .title("Your Position")
+        );
 
     }
 
@@ -402,10 +410,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
 
-        Log.wtf("Fly-Safe Location", mLastLocation.getLatitude() + " " + mLastLocation.getLongitude());
+
 
         //If the location if not empty then retrieve regular updates on the users location
-        if (mLastLocation == null) {
+        if (mLastLocation != null) {
+            Log.wtf("Fly-Safe Location", mLastLocation.getLatitude() + " " + mLastLocation.getLongitude());
             LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
 
         }
@@ -425,16 +434,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             //Check if we have the users location
             if (mLastLocation != null) {
-                //Get Lat/Long coordinates for users location
-                userLat = mLastLocation.getLatitude();
-                userLon = mLastLocation.getLongitude();
 
                 // Add users location to the map
-                mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(userLat, userLon))
-                        .anchor(0.5f, 0.5f)
-                        .title("Your Position")
-                );
+                createPositionMarker(mLastLocation);
 
                 //Re-validate that the user is in a safe flying zone
                 if (items != null) {
@@ -466,8 +468,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //If the users location changes then clear the map of markers and set the users new position
     @Override
     public void onLocationChanged(Location location) {
-        mMap.clear();
-        createMarker(location.getLatitude(), location.getLongitude(), "Your Position", "", "");
+        //mMap.clear();
+        userposition.remove();
+        createPositionMarker(location);
     }
 
     //This method requests updates of the users position every 1-10 seconds
@@ -526,10 +529,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             mMap.clear();
             if (mLastLocation != null) {
-                mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude()))
-                        .anchor(0.5f, 0.5f)
-                        .title("Your Location"));
+                createPositionMarker(mLastLocation);
             }
             //getPolygon();
 
@@ -570,10 +570,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             //If the users location is not null then place a marker in their position and zoom out from their location so that the suggested flying sites are visible at a glance
             if (mLastLocation != null) {
                 moveCamera(mLastLocation.getLatitude(), mLastLocation.getLongitude(), (float) 11.5);
-                mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude()))
-                        .anchor(0.5f, 0.5f)
-                        .title("Your Location"));
+                createPositionMarker(mLastLocation);
 
             }
             else
@@ -584,7 +581,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             //Take the first 6 entries of the list of available sites and create markers for each and place them on the map
             for (int i = 0; i < 6; i++) {
-                createMarker(loc.get(i).getLatitude(), loc.get(i).getLongitude(), "", "", "");
+                createMarker(loc.get(i).getLatitude(), loc.get(i).getLongitude(), "Potential Flying Site", "Please be sure to check rules before flying here", "");
             }
         }
 

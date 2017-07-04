@@ -55,7 +55,7 @@ public class ContactUsActivity extends AppCompatActivity {
 
             //set the text for under the image and set the onClickListener to start the email activity using the systems email services allowing the user to send the developer an email
             TextView developerInfo = (TextView) findViewById(R.id.developerInfo);
-            developerInfo.setText("Brian Mc Manus \nBachelor's Degree(Hons) in Commercial Computing");
+            developerInfo.setText("Brian Mc Manus(Software Engineer) \nBachelor's Degree(Hons) in Commercial Computing");
 
             developerInfo.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,15 +70,15 @@ public class ContactUsActivity extends AppCompatActivity {
             });
 
             //set the image and set the onClickListener to start the email activity using the systems email services allowing the user to send the institute an email
-            ImageView collegeImage = (ImageView) findViewById(R.id.collegeImage);
-            collegeImage.setImageResource(R.drawable.dkit_logo);
+            ImageView CompanyImage = (ImageView) findViewById(R.id.CompanyImage);
+            CompanyImage.setImageResource(R.drawable.logo);
 
-            collegeImage.setOnClickListener(new View.OnClickListener() {
+            CompanyImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent devEmailintent = new Intent(android.content.Intent.ACTION_SEND);
                     devEmailintent.setType("plain/text");
-                    devEmailintent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"info@dkit.ie"});
+                    devEmailintent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"brian@1108software.com"});
                     devEmailintent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
                     devEmailintent.putExtra(android.content.Intent.EXTRA_TEXT, "");
                     startActivity(Intent.createChooser(devEmailintent, "Send mail..."));
@@ -86,15 +86,15 @@ public class ContactUsActivity extends AppCompatActivity {
             });
 
             //set the text for under the image and set the onClickListener to start the email activity using the systems email services allowing the user to send the Institute an email
-            TextView collegeInfo = (TextView) findViewById(R.id.collegeInfo);
-            collegeInfo.setText("Dundalk Institute of Technology");
+            TextView CompanyInfo = (TextView) findViewById(R.id.CompanyInfo);
+            CompanyInfo.setText("1108 Software \nFor all your software development needs");
 
-            collegeInfo.setOnClickListener(new View.OnClickListener() {
+            CompanyInfo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent devEmailintent = new Intent(android.content.Intent.ACTION_SEND);
                     devEmailintent.setType("plain/text");
-                    devEmailintent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"info@dkit.ie"});
+                    devEmailintent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"brian@1108software.com"});
                     devEmailintent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
                     devEmailintent.putExtra(android.content.Intent.EXTRA_TEXT, "");
                     startActivity(Intent.createChooser(devEmailintent, "Send mail..."));
