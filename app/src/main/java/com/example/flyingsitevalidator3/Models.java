@@ -1,7 +1,6 @@
 package com.example.flyingsitevalidator3;
 
-import android.app.Activity;
-import android.app.ListActivity;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,16 +8,14 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -41,8 +38,7 @@ public class Models extends AppCompatActivity {
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     ArrayList<Model> mods = new ArrayList<Model>();
     Context context = this;
-    ListView listView;
-    ArrayAdapter<String> adapter;
+    ModelListAdapter adapter;
 
 
     @Override
@@ -58,26 +54,12 @@ public class Models extends AppCompatActivity {
 
 
         // Set up ListView and ArrayAdapter
-        listView = (ListView) findViewById(R.id.listView);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1);
+        ListView listView = (ListView) findViewById(R.id.listView);
+        adapter = new ModelListAdapter(context, mods);
+        listView.setAdapter(adapter);
 
-       /* // Put divider between Models and FooterView
-        listView.setFooterDividersEnabled(true);
-
-        //Set the footer view to the end of the list
-        TextView footerView = null;
-        footerView = (TextView) getLayoutInflater().inflate(R.layout.footer_view, null);
-
-        //add listener to the footer view, when clicked start the add model activity and get a result back
-        listView.addFooterView(footerView);
-        footerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(context, AddModelActivity.class);
-                startActivityForResult(intent, 0);
-            }
-        });*/
+        //Set the long-click listener to the list view
+        registerForContextMenu(listView);
 
         FloatingActionButton myFab = (FloatingActionButton) findViewById(R.id.fab);
         myFab.setOnClickListener(new View.OnClickListener() {
@@ -87,20 +69,17 @@ public class Models extends AppCompatActivity {
             }
         });
 
-        //Set the custom adapter to the list view
-        listView.setAdapter(adapter);
-        //Set the long-click listener to the list view
-        registerForContextMenu(listView);
+
 
         //Add each models name in the list to the adapter
-        for (int i = 0; i < mods.size(); i++) {
-            adapter.add(mods.get(i).getName());
-        }
+       /* for (int i = 0; i < mods.size(); i++) {
+            adapter.add(mods.get(i));
+        }*/
 
 
         /*Set the click listener for the list view, when an item is clicked it gets the name of the model and cycles through the list of models to
         * get that models details which is then placed in a model object, this model is then sent to the ModelInfo class through an intent*/
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 //Get the name of the model from the list that the user clicked
@@ -132,7 +111,7 @@ public class Models extends AppCompatActivity {
                     }
                 }
             }
-        });
+        });*/
     }
 
 
@@ -215,9 +194,9 @@ public class Models extends AppCompatActivity {
                         m.setFuelType(mods.get(i).getFuelType());
                         m.setModelType(mods.get(i).getModelType());
                         m.setRegistrationId(mods.get(i).getRegistrationId());
-                        mods.remove(i);
+                        //mods.remove(i);
                         adapter.remove(m.getName());
-                        adapter.notifyDataSetChanged();
+                        //adapter.notifyDataSetChanged();
                         mDatabase.child("users").child(mFirebaseAuth.getCurrentUser().getUid()).child("models").child(m.getName()).removeValue();
 
                     }
@@ -260,9 +239,9 @@ public class Models extends AppCompatActivity {
                                         m.setFuelType(mods.get(i).getFuelType());
                                         m.setModelType(mods.get(i).getModelType());
                                         m.setRegistrationId(mods.get(i).getRegistrationId());
-                                        mods.remove(i);
+                                        //mods.remove(i);
                                         adapter.remove(m.getName());
-                                        adapter.notifyDataSetChanged();
+                                        //adapter.notifyDataSetChanged();
 
                                     }
                                 }
@@ -293,8 +272,8 @@ public class Models extends AppCompatActivity {
             //If retrieval of the model information was a success we add the model to the list, database and the adapter
             if (resultCode == RESULT_OK) {
                 Model model = new Model(data);
-                adapter.add(model.getName());
-                mods.add(model);
+                adapter.add(model);
+                //mods.add(model);
                 mDatabase.child("users").child(mFirebaseAuth.getCurrentUser().getUid()).child("models").child(model.getName()).setValue(model);
             }
         }
@@ -303,18 +282,21 @@ public class Models extends AppCompatActivity {
             //If retrieval of the edited models data was successful then we remove the old entry and add the new information instead
             if (resultCode == RESULT_OK) {
                 Model model = new Model(data);
+
                 mDatabase.child("users").child(mFirebaseAuth.getCurrentUser().getUid()).child("models").child(model.getName()).removeValue();
                 adapter.remove(model.getName());
                 mods.remove(model);
-                adapter.add(model.getName());
-                mods.add(model);
+
+                adapter.add(model);
+                //mods.add(model);
+                mDatabase.child("users").child(mFirebaseAuth.getCurrentUser().getUid()).child("models").child(model.getName()).setValue(model);
             }
         }
         //If it is any other response we simply add the model back onto the list, adapter and the database in case of a fault
         else {
             Model model = new Model(data);
-            adapter.add(model.getName());
-            mods.add(model);
+            adapter.add(model);
+            //mods.add(model);
             mDatabase.child("users").child(mFirebaseAuth.getCurrentUser().getUid()).child("models").child(model.getName()).setValue(model);
         }
     }

@@ -16,4 +16,16 @@
         android:clickable="false"
         />
 
+    <TextView
+        android:id="@+id/lblListItem1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13dip"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:clickable="false"
+        android:background="#7ECFE3"
+        />
+
 </LinearLayout>

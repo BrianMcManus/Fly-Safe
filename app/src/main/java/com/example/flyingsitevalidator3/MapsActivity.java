@@ -59,7 +59,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private String temp;
     List<HashMap<String, String>> googlePlaces = null;
     Place_JSON placeJson = new Place_JSON();
+    List<HashMap<String, String>> googleRoads = null;
+    Roads_JSON roadsJson = new Roads_JSON();
     JSONObject jObject;
+    JSONObject jObject1;
     Location loc;
     LatLng ll;
     com.google.android.gms.maps.model.Marker userposition;
@@ -179,9 +182,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
                     //Use the sbMethod to build the request url to send to the API
-                    StringBuilder sbValue = new StringBuilder(sbMethod(loc));
+                    StringBuilder sbValue = new StringBuilder(PlacesSbMethod(loc));
                     //Send the url to the placesTask method
-                    plasesTask1(sbValue.toString());
+                placesWithoutLocationTask(sbValue.toString());
 
                 //Check the distance between the user and any of the airport positions in the list
                 if (items != null && items.size() > 0) {
@@ -427,8 +430,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (intent.getParcelableExtra("longLat_dataProvider") == null && intent.getSerializableExtra("AllSites_dataProvider") == null) {
 
             if (mLastLocation != null) {
-                StringBuilder sbValue = new StringBuilder(sbMethod(mLastLocation));
-                plasesTask(sbValue.toString());
+                StringBuilder sbValue = new StringBuilder(PlacesSbMethod(mLastLocation));
+                placesWithLocationTask(sbValue.toString());
             }
 
 
@@ -692,8 +695,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Runnable run = new Runnable() {
                 @Override
                 public void run() {
-                    StringBuilder sbValue = new StringBuilder(sbMethod(location1));
-                    plasesTask(sbValue.toString());
+                    StringBuilder sbValue = new StringBuilder(PlacesSbMethod(location1));
+                    if(mLastLocation!=null) {
+                        placesWithLocationTask(sbValue.toString());
+                    }
+                    else
+                    {
+                        placesWithoutLocationTask(sbValue.toString());
+                    }
+
+                    /*StringBuilder sbValue1 = new StringBuilder(RoadsSbMethod(location1));
+                    roadsTask(sbValue1.toString());*/
                 }
             };
             Thread t = new Thread(run);
@@ -1030,8 +1042,112 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     //Moving into server
 
+    //This method takes in a location and uses it to build a StringBuilder objects which represents a request to Google Roads API
+    public StringBuilder RoadsSbMethod(Location currentLocation) {
+        //current location
+        double mLatitude = currentLocation.getLatitude();
+        double mLongitude = currentLocation.getLongitude();
+
+        StringBuilder sb = new StringBuilder("https://roads.googleapis.com/v1/nearestRoads?points=" + mLatitude + "," + mLongitude + "&key=AIzaSyDXf1zyCT23G6-g2ocSaEg7wHUAmjoFeLQ");
+
+        Log.d("Map", "<><>api: " + sb.toString());
+
+        return sb;
+    }
+
+
+    /*Used specifically for when the users location is available, it requests data from Google Places API to find any
+     * structures around the the users location coordinates, the place type is specified in the parameters,
+     * it then passes the data that is returned to the parserTask method to parse the JSON response from the API */
+    private void roadsTask(final String... url) {
+        Runnable run = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //Get the data from Googles Places API
+                    String data = downloadUrl(url[0]);
+                    temp = data;
+                } catch (Exception e) {
+                    Log.d("Background Task", e.toString());
+                }
+            }
+        };
+        Thread t = new Thread(run);
+        t.start();
+
+        //Wait half a second for the response to be returned
+        synchronized (t) {
+            try {
+                t.wait(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //Parse the response
+        roadsParserTask(temp);
+    }
+
+    /* Used specifically when the users location is available, this method takes the JSON response from Googles Places API and places it in
+    * JSON objects which are then placed in a hashmap, it then uses these locations to check their distance from the user, if any structure is too close
+    * the method sets the schoolOk variable as false which alerts the user that the area is unsafe*/
+    private void roadsParserTask(final String... jsonData) {
+
+
+        Runnable run = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //Place JSON response in an object
+                    jObject1 = new JSONObject(jsonData[0]);
+
+                    //Place object in the hashmap
+                    googleRoads = roadsJson.roadsParse(jObject1);
+
+
+                } catch (Exception e) {
+                    Log.d("Exception", e.toString());
+                }
+            }
+        };
+        Thread t = new Thread(run);
+        t.start();
+        //Wait half a second for the response
+        synchronized (t) {
+            try {
+                t.wait(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+
+        //if the response was not null then cycle through the list checking that it is a valid distance from the user
+        if (googleRoads != null) {
+            Log.wtf("Brians output", googleRoads.toString());
+            /*for (int i = 0; i < googleRoads.size(); i++) {
+                double d1 = Double.parseDouble(googleRoads.get(i).get("lat"));
+                double d2 = Double.parseDouble(googleRoads.get(i).get("lng"));
+                Location loc = new Location("");
+                loc.setLatitude(d1);
+                loc.setLongitude(d2);
+                float distance = loc.distanceTo(mLastLocation);
+
+
+                //If not the respective variable is changed and user is alerted
+                if (distance <= 500) {
+                    schoolOk = false;
+                    break;
+                }
+
+            }*/
+        }
+    }
+
     //This method takes in a location and uses it to build a StringBuilder objects which represents a request to Google Places API
-    public StringBuilder sbMethod(Location currentLocation) {
+    public StringBuilder PlacesSbMethod(Location currentLocation) {
         //current location
         double mLatitude = currentLocation.getLatitude();
         double mLongitude = currentLocation.getLongitude();
@@ -1053,7 +1169,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     /*Used specifically for when the users location is available, it requests data from Google Places API to find any
      * structures around the the users location coordinates, the place type is specified in the parameters,
      * it then passes the data that is returned to the parserTask method to parse the JSON response from the API */
-    private void plasesTask(final String... url) {
+    private void placesWithLocationTask(final String... url) {
         Runnable run = new Runnable() {
             @Override
             public void run() {
@@ -1079,14 +1195,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         //Parse the response
-        parserTask(temp);
+        placesWithLocationParserTask(temp);
     }
 
 
     /*Used specifically for when the users location is unavailable, it requests data from Google Places API to find any
     * structures around the the given location coordinates, the place type is specified in the parameters,
     * it then passes the data that is returned to the parserTask method to parse the JSON response from the API */
-    private void plasesTask1(final String... url) {
+    private void placesWithoutLocationTask(final String... url) {
         Runnable run = new Runnable() {
             @Override
             public void run() {
@@ -1112,10 +1228,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         //Parse the response
-        parserTask1(temp);
+        placesWithoutLocationParserTask(temp);
     }
 
-    //Request information from Googles Places API using the passed Request String
+    //Request information from Googles Places or Roads API using the passed Request String
     private String downloadUrl(String strUrl) throws IOException {
         String data = "";
         InputStream iStream = null;
@@ -1163,7 +1279,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     /* Used specifically when the users location is available, this method takes the JSON response from Googles Places API and places it in
     * JSON objects which are then placed in a hashmap, it then uses these locations to check their distance from the user, if any structure is too close
     * the method sets the schoolOk variable as false which alerts the user that the area is unsafe*/
-    private void parserTask(final String... jsonData) {
+    private void placesWithLocationParserTask(final String... jsonData) {
 
 
         Runnable run = new Runnable() {
@@ -1218,7 +1334,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     /* Used specifically when the users location is unavailable, this method takes the JSON response from Googles Places API and places it in
    * JSON objects which are then placed in a hashmap, it then uses these locations to check their distance from the location passed to the method, if any structure is too close
    * the method sets the schoolOk variable as false which alerts the user that the area is unsafe*/
-    private void parserTask1(final String... jsonData) {
+    private void placesWithoutLocationParserTask(final String... jsonData) {
 
 
         Runnable run = new Runnable() {
@@ -1345,6 +1461,76 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 e.printStackTrace();
             }
             return place;
+        }
+    }
+
+
+    public class Roads_JSON {
+
+        /**
+         * Receives a JSONObject and returns a list
+         */
+        public List<HashMap<String, String>> roadsParse(JSONObject jObject) {
+
+            JSONArray jRoads = null;
+            try {
+                /** Retrieves all the elements in the 'roads' array */
+                jRoads = jObject.getJSONArray("snappedPoints");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            /** Invoking getRoads with the array of json object
+             * where each json object represent a road
+             */
+            return getRoads(jRoads);
+        }
+
+        private List<HashMap<String, String>> getRoads(JSONArray jRoads) {
+            int roadsCount = jRoads.length();
+            List<HashMap<String, String>> roadsList = new ArrayList<HashMap<String, String>>();
+            HashMap<String, String> road = null;
+
+            /** Taking each place, parses and adds to list object */
+            for (int i = 0; i < roadsCount; i++) {
+                try {
+                    /** Call getPlace with place JSON object to parse the place */
+                    road = getRoad((JSONObject) jRoads.get(i));
+                    roadsList.add(road);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return roadsList;
+        }
+
+        /**
+         * Parsing the Place JSON object
+         */
+        private HashMap<String, String> getRoad(JSONObject jRoad) {
+
+            HashMap<String, String> road = new HashMap<String, String>();
+            String originalIndex = "";
+            String placeId = "";
+            String latitude = "";
+            String longitude = "";
+
+            try {
+
+                placeId = jRoad.getString("placeId");
+                latitude = jRoad.getJSONObject("location").getString("latitude");
+                longitude = jRoad.getJSONObject("location").getString("longitude");
+                originalIndex = jRoad.getString("originalIndex");
+
+
+                road.put("placeId", placeId);
+                road.put("lat", latitude);
+                road.put("lng", longitude);
+                road.put("originalIndex", originalIndex);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return road;
         }
     }
 

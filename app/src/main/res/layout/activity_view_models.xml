@@ -3,27 +3,35 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/sky_background2">
 
 
-    <ListView
-        android:id="@+id/listView"
+    <ListView android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
->
-
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="14.0sp"
+        android:layout_marginTop="15dip">
     </ListView>
+
+    <FrameLayout
+        android:layout_width="70dip"
+        android:layout_height="70dip"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="top|right"
+        android:layout_marginTop="20dip">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:src="@android:drawable/ic_menu_add"
-        app:layout_anchor="@id/listView"
-        app:layout_anchorGravity="top|right"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp" />
+        app:fabSize="mini"
+        app:backgroundTint="#235cba"/>
+
+    </FrameLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>

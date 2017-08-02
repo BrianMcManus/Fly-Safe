@@ -200,7 +200,7 @@ public class MainMenuActivity extends AppCompatActivity {
                         mContext.startActivity(infoIntent);
                     } else if (position == 4) {
                         //Create an intent and start the activity to initialise the web browser and direct to the registration site
-                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.asset-international.com/asset/account/login.jsf"));
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.iaa.ie/general-aviation/drones/drone-registration"));
                         mContext.startActivity(browserIntent);
                     }
 
@@ -273,7 +273,7 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                if (dataSnapshot.child("modelId").getValue() != null) {
+                if (dataSnapshot.child("name").getValue() != null) {
                     Model m = new Model();
 
                     m.setName((String) dataSnapshot.child("name").getValue());

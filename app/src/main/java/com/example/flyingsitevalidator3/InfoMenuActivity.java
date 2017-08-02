@@ -37,10 +37,10 @@ public class InfoMenuActivity extends AppCompatActivity {
 
             //Set up the rules and regulations textview
             TextView tvRaR = (TextView) findViewById(R.id.Rules_and_Regulations);
-            //Set the background color of the text field
+            /*//Set the background color of the text field
             tvRaR.setBackgroundColor(Color.parseColor("#7ECFE3"));
             //Set the color of the text
-            tvRaR.setTextColor(Color.WHITE);
+            tvRaR.setTextColor(Color.WHITE);*/
             //Populate the text field with text
             tvRaR.setText("Rules and Regulations");
             //Set the click listener to send the user to the relevant activity
@@ -71,10 +71,10 @@ public class InfoMenuActivity extends AppCompatActivity {
             TextView tvFT = (TextView) findViewById(R.id.Flying_Tips);
             //Populate the text field with text
             tvFT.setText("Flying Tips");
-            //Set the background color of the text field
+           /* //Set the background color of the text field
             tvFT.setBackgroundColor(Color.parseColor("#7ECFE3"));
             //Set the color of the text
-            tvFT.setTextColor(Color.WHITE);
+            tvFT.setTextColor(Color.WHITE);*/
             //Set the click listener to send the user to the relevant activity
             tvFT.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -103,10 +103,10 @@ public class InfoMenuActivity extends AppCompatActivity {
             TextView tvCU = (TextView) findViewById(R.id.Contact_Us);
             //Populate the text field with text
             tvCU.setText("Contact Us");
-            //Set the background color of the text field
+            /*//Set the background color of the text field
             tvCU.setBackgroundColor(Color.parseColor("#7ECFE3"));
             //Set the color of the text
-            tvCU.setTextColor(Color.WHITE);
+            tvCU.setTextColor(Color.WHITE);*/
             //Set the click listener to send the user to the relevant activity
             tvCU.setOnClickListener(new View.OnClickListener() {
                 @Override

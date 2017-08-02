@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -71,7 +72,7 @@ public class ClubsAndSitesNew extends AppCompatActivity{
 
             // Locate the EditText in listview_main.xml
             editsearch = (EditText) findViewById(R.id.search);
-
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
             // Capture Text in EditText
             editsearch.addTextChangedListener(new TextWatcher() {
 
