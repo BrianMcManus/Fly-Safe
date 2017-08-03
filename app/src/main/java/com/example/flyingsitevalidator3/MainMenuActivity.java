@@ -180,6 +180,10 @@ public class MainMenuActivity extends AppCompatActivity {
                         //Create an intent and put the airport locations inside then start the activity
                         Intent intent = new Intent(mContext.getApplicationContext(), MapsActivity.class);
                         intent.putExtra("AllAirports_dataProvider", aMkr);
+                        Bundle b = new Bundle();
+                        b.putSerializable("AllModels_dataProvider", mods);
+                        intent.putExtras(b);
+                        intent.putExtra("Clubs_dataProvider", clubs);
                         mContext.startActivity(intent);
                     } else if (position == 1) {
                         //Create an intent and put the airport locations inside then start the activity
@@ -335,6 +339,7 @@ public class MainMenuActivity extends AppCompatActivity {
                     club.setName((String) dataSnapshot.child("name").getValue());
                     club.setContact((String) dataSnapshot.child("contact").getValue());
                     club.setCounty((String) dataSnapshot.child("county").getValue());
+                    club.setRestriction((String) dataSnapshot.child("restriction").getValue());
 
                     try {
                         double nLat = (double) dataSnapshot.child("lat").getValue();

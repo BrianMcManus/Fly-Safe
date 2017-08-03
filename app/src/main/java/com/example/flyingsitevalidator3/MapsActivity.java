@@ -1,5 +1,6 @@
 package com.example.flyingsitevalidator3;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -15,6 +16,9 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -23,20 +27,29 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Places;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.*;
+import com.google.android.gms.maps.model.Marker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -49,6 +62,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private ArrayList<AirportMarker> items = new ArrayList<AirportMarker>();
+    private ArrayList<Model> models = new ArrayList<Model>();
+    private ArrayList<Club> clubs = new ArrayList<Club>();
     private GoogleApiClient mGoogleApiClient;
     private double userLat = 0;
     private double userLon = 0;
@@ -66,6 +81,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Location loc;
     LatLng ll;
     com.google.android.gms.maps.model.Marker userposition;
+    private Spinner modelSpinner;
+    private ArrayList<com.google.android.gms.maps.model.Marker> mMarkerArray = new ArrayList<com.google.android.gms.maps.model.Marker>();
+    boolean resumed;
+    MapStateManager mgr;
 
 
     @Override
@@ -73,10 +92,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        setupMapIfNeeded();
 
 
         // Create an instance of GoogleAPIClient adding location and Place API's.
@@ -92,6 +108,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             createLocationRequest();
         }
 
+
+
+    }
+
+    private void setupMapIfNeeded() {
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        if (mMap == null) {
+            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.map);
+            mapFragment.getMapAsync(this);
+        }
     }
 
     protected void onStart() {
@@ -104,6 +131,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onResume() {
         super.onResume();
+        setupMapIfNeeded();
         //Check if the client is still connected and if not connect them
         if (!mGoogleApiClient.isConnected()) {
             mGoogleApiClient.connect();
@@ -111,6 +139,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     protected void onStop() {
+        clearFiles();
         //Disconnect the client from the api
         mGoogleApiClient.disconnect();
         super.onStop();
@@ -118,13 +147,141 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            if(mgr.getResume()) {
+                mgr = new MapStateManager(this);
+                mgr.saveMapState(null);
+                mgr = null;
+                clearFiles();
+                this.finish();
+            }
+            //onStop();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
+
+        if(mgr!=null) {
+            mgr = new MapStateManager(this);
+            mgr.saveMapState(mMap);
+            Toast.makeText(this, "Map State has been saved?", Toast.LENGTH_SHORT).show();
+        }
+
         //Check if the client is still connected and if they are stop updating location and disconnect client
         if (mGoogleApiClient.isConnected()) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
             mGoogleApiClient.disconnect();
         }
+    }
+
+
+    public void writePointstoFile(ArrayList<com.google.android.gms.maps.model.Marker> markers, com.google.android.gms.maps.model.Marker userposition)
+    {
+        try {
+            // Modes: MODE_PRIVATE, MODE_WORLD_READABLE, MODE_WORLD_WRITABLE
+            FileOutputStream output = openFileOutput("mapPoints.txt",
+                    Context.MODE_PRIVATE);
+            DataOutputStream dout = new DataOutputStream(output);
+            dout.writeInt(mMarkerArray.size()); // Save line count
+            for (com.google.android.gms.maps.model.Marker point : mMarkerArray) {
+                LatLng pos = point.getPosition();
+                dout.writeUTF(pos.latitude + "," + pos.longitude);
+                Log.v("write", pos.latitude + "," + pos.longitude);
+            }
+            dout.flush(); // Flush stream ...
+            dout.close(); // ... and close.
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+
+        try {
+            // Modes: MODE_PRIVATE, MODE_WORLD_READABLE, MODE_WORLD_WRITABLE
+            FileOutputStream output = openFileOutput("userPoint.txt",
+                    Context.MODE_PRIVATE);
+            DataOutputStream dout = new DataOutputStream(output);
+
+                LatLng pos = userposition.getPosition();
+                dout.writeUTF(pos.latitude + "," + pos.longitude);
+                Log.v("write", pos.latitude + "," + pos.longitude);
+
+            dout.flush(); // Flush stream ...
+            dout.close(); // ... and close.
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+
+
+    }
+
+    public void getPointsFromFile()
+    {
+        try {
+            FileInputStream input = openFileInput("mapPoints.txt");
+            DataInputStream din = new DataInputStream(input);
+            int sz = din.readInt(); // Read line count
+            for (int i = 0; i < sz; i++) {
+                String str = din.readUTF();
+                Log.v("read", str);
+                String[] stringArray = str.split(",");
+                double latitude = Double.parseDouble(stringArray[0]);
+                double longitude = Double.parseDouble(stringArray[1]);
+                LatLng ll = new LatLng(latitude,longitude);
+                createMarker(latitude,longitude, "Potential Flying Site", "Please be sure to check rules before flying here", "");
+            }
+            din.close();
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+
+        try {
+            FileInputStream input = openFileInput("userPoint.txt");
+            DataInputStream din = new DataInputStream(input);
+                String str = din.readUTF();
+                Log.v("read", str);
+                String[] stringArray = str.split(",");
+            if(stringArray.length >0) {
+                double latitude = Double.parseDouble(stringArray[0]);
+                double longitude = Double.parseDouble(stringArray[1]);
+                Location location = new Location("");
+                location.setLatitude(latitude);
+                location.setLongitude(longitude);
+                createPositionMarker(location);
+            }
+
+            din.close();
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+    }
+
+    public void clearFiles()
+    {
+        File fileDir = getFilesDir();
+        File file = new File(fileDir, "mapPoints.txt");
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        writer.print("");
+        writer.close();
+
+        file = new File(fileDir, "userPoint.txt");
+        writer = null;
+        try {
+            writer = new PrintWriter(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        writer.print("");
+        writer.close();
     }
 
 
@@ -139,8 +296,40 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Create a new map
         mMap = googleMap;
 
+        mgr = new MapStateManager(this);
+        CameraPosition position = mgr.getSavedCameraPosition();
+        if (mgr.getResume()) {
+            CameraUpdate update = CameraUpdateFactory.newCameraPosition(position);
+            Toast.makeText(this, "entering Resume State", Toast.LENGTH_SHORT).show();
+            getPointsFromFile();
+            resumed = true;
+            mMap.moveCamera(update);
+
+            mMap.setMapType(mgr.getSavedMapType());
+        }
+
         //Create an intent from the information sent from previous activity
         Intent intent = getIntent();
+
+        Bundle b = intent.getExtras();
+        //Use the bundle in the intent to populate the list with the users models
+        models = (ArrayList<Model>) b.getSerializable("AllModels_dataProvider");
+        clubs = (ArrayList<Club>) intent.getSerializableExtra("Clubs_dataProvider");
+
+        ArrayList<String> modelsTemp = new ArrayList();
+        modelsTemp.add("Click here to check which clubs your models can fly at");
+        for(int i = 0; i<models.size(); i++)
+        {
+            modelsTemp.add(models.get(i).getName());
+        }
+
+        modelSpinner = (Spinner) findViewById(R.id.spinner1);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, modelsTemp);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        modelSpinner.setAdapter(dataAdapter);
+        modelSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener(this,clubs,models ));
+
 
         //Populate the list with all the airport marker object information
         items = (ArrayList<AirportMarker>) intent.getSerializableExtra("AllAirports_dataProvider");
@@ -170,6 +359,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onMapClick(final LatLng position) {
                 //Clear the map of all markers
                 mMap.clear();
+                mMarkerArray.clear();
                 //Create a new blank location object and set its lat/lon coordinates
                 loc = new Location("");
                 loc.setLatitude(position.latitude);
@@ -342,9 +532,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         BitmapDrawable bitmapdraw = (BitmapDrawable) ContextCompat.getDrawable(getApplicationContext(), R.mipmap.ic_launcher2);
         Bitmap b = bitmapdraw.getBitmap();
         Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+        com.google.android.gms.maps.model.Marker m;
 
         if (url != null) {
-            com.google.android.gms.maps.model.Marker m = mMap.addMarker(new MarkerOptions()
+             m = mMap.addMarker(new MarkerOptions()
                     .position(new LatLng(latitude, longitude))
                     .anchor(0.5f, 0.5f)
                     .title(title)
@@ -354,13 +545,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setOnInfoWindowClickListener(this);
 
         } else {
-            mMap.addMarker(new MarkerOptions()
+             m = mMap.addMarker(new MarkerOptions()
                     .position(new LatLng(latitude, longitude))
                     .anchor(0.5f, 0.5f)
                     .title(title)
                     .snippet(snippet)
                     .icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
         }
+        mMarkerArray.add(m);
 
     }
 
@@ -398,6 +590,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .title("Your Position")
         );
 
+
     }
 
     //When the user is connected to googles location services API we try and get the users coordinates
@@ -423,28 +616,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
 
-        //Create a new intent from the data passed to this activity through an intent
-        Intent intent = getIntent();
+        if (!mgr.getResume()) {
+            //Create a new intent from the data passed to this activity through an intent
+            Intent intent = getIntent();
 
-        //If the intent was not for locating clubs and just for validating the users position or a particular site of te users choosing
-        if (intent.getParcelableExtra("longLat_dataProvider") == null && intent.getSerializableExtra("AllSites_dataProvider") == null) {
+            //If the intent was not for locating clubs and just for validating the users position or a particular site of te users choosing
+            if (intent.getParcelableExtra("longLat_dataProvider") == null && intent.getSerializableExtra("AllSites_dataProvider") == null) {
 
-            if (mLastLocation != null) {
-                StringBuilder sbValue = new StringBuilder(PlacesSbMethod(mLastLocation));
-                placesWithLocationTask(sbValue.toString());
-            }
-
-
-            //Check if we have the users location
-            if (mLastLocation != null) {
-
-                // Add users location to the map
-                createPositionMarker(mLastLocation);
-
-                //Re-validate that the user is in a safe flying zone
-                if (items != null) {
-                    validDistance(mLastLocation, items);
+                if (mLastLocation != null) {
+                    StringBuilder sbValue = new StringBuilder(PlacesSbMethod(mLastLocation));
+                    placesWithLocationTask(sbValue.toString());
                 }
+
+
+                //Check if we have the users location
+                if (mLastLocation != null) {
+
+                    // Add users location to the map
+                    createPositionMarker(mLastLocation);
+
+                    //Re-validate that the user is in a safe flying zone
+                    if (items != null) {
+                        validDistance(mLastLocation, items);
+                    }
+                }
+
             }
         }
 
@@ -472,7 +668,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onLocationChanged(Location location) {
         //mMap.clear();
-        userposition.remove();
+        if(userposition!=null) {
+            userposition.remove();
+        }
         createPositionMarker(location);
 
         //Check if the user has entered a dangerous area after location update
@@ -577,6 +775,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             alert.show();
 
             mMap.clear();
+            mMarkerArray.clear();
             if (mLastLocation != null) {
                 createPositionMarker(mLastLocation);
             }
@@ -615,6 +814,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Collections.shuffle(loc);
             //Clear the map of any markers already present
             mMap.clear();
+            mMarkerArray.clear();
 
             //If the users location is not null then place a marker in their position and zoom out from their location so that the suggested flying sites are visible at a glance
             if (mLastLocation != null) {

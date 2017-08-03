@@ -46,4 +46,6 @@
         <item>Delete</item>
     </string-array>
 
+    <string name="model_prompt">Model Eligability</string>
+
 </resources>
